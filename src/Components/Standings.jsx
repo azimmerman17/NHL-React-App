@@ -1,22 +1,64 @@
+import { useState } from 'react';
+
 import { StandingsData } from "../Models/StandingsData"
+import RemoveDuplicates from './RemoveDuplicates';
+import StandingsButton from "./StandingsButtons"
+import StandingsDivisional from './StandingsDivisional';
+import StandingsWildCard from './StandingsWildCards';
+import StandingsPlayoffs from './StandingsPlayoffs';
 
 const Standings = () => {
   const { records } = StandingsData
 
-  const standings = records.map((record, i) => {
-    const { name } = record.division
-    return (
-      <h5 key={name}>{name}</h5>
-    )
+  const [radioNme, setRadioNme] = useState('Divisional');
+
+  let conferences = []
+  records.forEach(record => {
+    const { name } = record.conference
+    conferences.push(name)
   })
+  RemoveDuplicates(conferences.sort())
+
+  console.log(conferences)
+
+  const standings = conferences.map((conference, i) => {
+    switch (radioNme) {
+      case 'Divisional':
+        return (
+          <div key={`${conference}-Conference`}>
+            <h3>{conference}</h3>
+            <p>{radioNme}</p>
+            <StandingsDivisional />
+
+          </div>
+        ) 
+      case 'Wild Card':
+        return (
+          <div key={`${conference}-Conference`}>
+            <h3>{conference}</h3>
+            <p>{radioNme}</p>
+            <StandingsWildCard />
+          </div>
+        ) 
+      case 'Playoffs':
+        return (
+          <div key={`${conference}-Conference`}>
+            <h3>{conference}</h3>
+            <p>{radioNme}</p>
+            <StandingsPlayoffs />
+          </div>
+        ) 
+    }
+  })
+
+
   return (
     <div>
-      <h4>STANDINGS PAGE</h4>
+      <h4>{`${radioNme} Standings`}</h4>
       <div>
-      <button>Division</button>
-      <button>Wild Card</button>
-      <button>Playoffs</button>
+      <StandingsButton radioNme={radioNme} setRadioNme={setRadioNme}/> 
       </div>
+      
       {standings}
     </div>
 

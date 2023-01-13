@@ -27,9 +27,7 @@ const Standings = () => {
         return (
           <div key={`${conference}-Conference`}>
             <h3>{conference}</h3>
-            <p>{radioNme}</p>
-            <StandingsDivisional />
-
+              <StandingsDivisional records={records} conference={conference}/>
           </div>
         ) 
       case 'Wild Card':

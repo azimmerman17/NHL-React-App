@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.standings-table {
+  font-size: smaller;
+}
+
+.team-name {
+  text-align: left;
+}
+
+main {
+  width: 98%;
+  margin: auto;
+}

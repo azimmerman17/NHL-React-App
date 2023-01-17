@@ -19,31 +19,27 @@ const Standings = () => {
   })
   RemoveDuplicates(conferences.sort())
 
-  console.log(conferences)
-
   const standings = conferences.map((conference, i) => {
     switch (radioNme) {
       case 'Divisional':
         return (
           <div key={`${conference}-Conference`}>
-            <h3>{conference}</h3>
+            <h3>{conference} Conference</h3>
               <StandingsDivisional records={records} conference={conference}/>
           </div>
         ) 
       case 'Wild Card':
         return (
           <div key={`${conference}-Conference`}>
-            <h3>{conference}</h3>
-            <p>{radioNme}</p>
-            <StandingsWildCard />
+            <h3>{conference} Conference</h3>
+            <StandingsWildCard records={records} conference={conference}/>
           </div>
         ) 
       case 'Playoffs':
         return (
           <div key={`${conference}-Conference`}>
             <h3>{conference}</h3>
-            <p>{radioNme}</p>
-            <StandingsPlayoffs />
+            <StandingsPlayoffs records={records} conference={conference}/>
           </div>
         ) 
     }
@@ -56,7 +52,6 @@ const Standings = () => {
       <div>
       <StandingsButton radioNme={radioNme} setRadioNme={setRadioNme}/> 
       </div>
-      
       {standings}
     </div>
 

@@ -8,6 +8,7 @@ const StandingsButton = ({ radioNme, setRadioNme }) => {
     const radios = [
       { nme: 'Divisional' },
       { nme: 'Wild Card' },
+      { nme: 'Conference' },
       { nme: 'Playoffs' },
     ];
   

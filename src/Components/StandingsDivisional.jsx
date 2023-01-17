@@ -4,7 +4,6 @@ import StandingsHeaders from "./StandingsHeaders"
 import StandingsBody from "./StandingsBody"
 
 const StandingsDivisional = ({ records, conference  }) => {
-  
   let stats = [
     'Rank',
     'Team',
@@ -34,11 +33,7 @@ const StandingsDivisional = ({ records, conference  }) => {
         </Table>
       )
     }
-
-
   })
-
-
 
   return (
     <div>

@@ -38,11 +38,14 @@
 }
 
 .standings-table {
-  font-size: smaller;
+  font-size: small;
 }
 
 .team-name {
   text-align: left;
+  max-width: 300px;
+  min-width: 75px;
+  font-size: small;
 }
 
 main {

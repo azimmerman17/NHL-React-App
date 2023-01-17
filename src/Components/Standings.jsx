@@ -5,6 +5,7 @@ import RemoveDuplicates from './RemoveDuplicates';
 import StandingsButton from "./StandingsButtons"
 import StandingsDivisional from './StandingsDivisional';
 import StandingsWildCard from './StandingsWildCards';
+import StandingsConference from './StandingConference';
 import StandingsPlayoffs from './StandingsPlayoffs';
 
 const Standings = () => {
@@ -35,6 +36,14 @@ const Standings = () => {
             <StandingsWildCard records={records} conference={conference}/>
           </div>
         ) 
+      case 'Conference':
+        return (
+          <div key={`${conference}-Conference`}>
+            <h3>{conference} Conference</h3>
+            <StandingsConference records={records} conference={conference}/>
+          </div>
+        )
+        
       case 'Playoffs':
         return (
           <div key={`${conference}-Conference`}>

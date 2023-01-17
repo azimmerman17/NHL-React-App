@@ -29,7 +29,7 @@ const StandingsDivisional = ({ records, conference  }) => {
           <thead>
             <StandingsHeaders stats={stats} nme={name}/>
           </thead>
-            <StandingsBody stats={stats} teamRecords={teamRecords}/>
+          <StandingsBody stats={stats} teamRecords={teamRecords}/>
         </Table>
       )
     }

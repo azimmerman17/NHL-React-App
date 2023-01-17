@@ -18,8 +18,6 @@ const StandingsWildCard = ({ records, conference }) => {
     }
   })
 
-console.log(conferenceWildCard)
-
   let statsDiv = [
     'Rank',
     'Team',
@@ -52,7 +50,7 @@ console.log(conferenceWildCard)
     'Streak',
   ]
 
-  const divisions = records.map((record, i) => {
+  const divisions = records.map((record) => {
     const { division, teamRecords } = record
     const { name } = division
     let top3Teams = []
@@ -68,7 +66,7 @@ console.log(conferenceWildCard)
           <thead>
             <StandingsHeaders stats={statsDiv} nme={name}/>
           </thead>
-            <StandingsBody stats={statsDiv} teamRecords={top3Teams}/>
+          <StandingsBody stats={statsDiv} teamRecords={top3Teams}/>
         </Table>
       )
     }
@@ -81,7 +79,7 @@ console.log(conferenceWildCard)
         <thead>
           <StandingsHeaders stats={statsWC} nme='Wild Card'/>
         </thead>
-          <StandingsBody stats={statsWC} teamRecords={conferenceWildCard} />
+        <StandingsBody stats={statsWC} teamRecords={conferenceWildCard} />
       </Table>
     </div>
   )

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Stack from 'react-bootstrap/Stack';
+
 
 import { StandingsData } from "../Models/StandingsData"
 import RemoveDuplicates from './RemoveDuplicates';
@@ -7,6 +9,7 @@ import StandingsDivisional from './StandingsDivisional';
 import StandingsWildCard from './StandingsWildCards';
 import StandingsConference from './StandingConference';
 import StandingsPlayoffs from './StandingsPlayoffs';
+import StandingsLeague from './StandingsLeague';
 
 const Standings = () => {
   const { records } = StandingsData
@@ -19,6 +22,10 @@ const Standings = () => {
     conferences.push(name)
   })
   RemoveDuplicates(conferences.sort())
+
+  if(radioNme === 'League') {
+    conferences = ['NHL']
+  }
 
   const standings = conferences.map((conference, i) => {
     switch (radioNme) {
@@ -43,26 +50,31 @@ const Standings = () => {
             <StandingsConference records={records} conference={conference}/>
           </div>
         )
-        
-      case 'Playoffs':
+      case 'League':
         return (
-          <div key={`${conference}-Conference`}>
-            <h3>{conference}</h3>
-            <StandingsPlayoffs records={records} conference={conference}/>
+          <div key={`${conference}`}>
+            <StandingsLeague records={records} conference={conference}/>
           </div>
-        ) 
+          )
+        
+      // case 'Playoffs':
+      //   return (
+      //     <div key={`${conference}-Conference`}>
+      //       <h3>{conference}</h3>
+      //       <StandingsPlayoffs records={records} conference={conference}/>
+      //     </div>
+      //   ) 
     }
   })
 
 
+
   return (
-    <div>
+    <Stack gap={3}>
       <h4>{`${radioNme} Standings`}</h4>
-      <div>
       <StandingsButton radioNme={radioNme} setRadioNme={setRadioNme}/> 
-      </div>
       {standings}
-    </div>
+    </Stack>
 
   )
 }

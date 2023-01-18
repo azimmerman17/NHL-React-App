@@ -1,6 +1,6 @@
 const StandingsData = ({ teamRecord, stats }) => {
   const data = stats.map((stat) => {
-    const { divisionRank, team, gamesPlayed, leagueRecord, points, pointsPercentage, row, goalsScored, goalsAgainst, streak, wildCardRank, conferenceRank } = teamRecord
+    const { divisionRank, team, gamesPlayed, leagueRecord, points, pointsPercentage, row, goalsScored, goalsAgainst, streak, wildCardRank, conferenceRank, leagueRank } = teamRecord
     const { name } = team
     const { wins, losses, ot } = leagueRecord
     const { streakCode } = streak
@@ -12,6 +12,8 @@ const StandingsData = ({ teamRecord, stats }) => {
         return <td key={`${name}-wildCardRank`} className='standings-table'>{wildCardRank}</td>  
       case 'Rank-Con':
         return <td key={`${name}-conferenceRank`} className='standings-table'>{conferenceRank}</td>      
+      case 'Rank-Lge':
+        return <td key={`${name}-leagueRank`} className='standings-table'>{leagueRank}</td>      
       case 'Team' :
         return <th key={{name}} className='team-name standings-table'>{name}</th>
       case 'G' :

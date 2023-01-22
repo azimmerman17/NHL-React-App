@@ -27,11 +27,12 @@ const StandingsWildCard = ({ records, conference }) => {
     'OT',
     'PTS',
     'P%',
+    'RW',
     'ROW',
     'GF',
     'GA',
-    'Diff',
-    'Streak',
+    'DIFF',
+    'STRK',
   ]
 
   let statsWC = [
@@ -43,11 +44,12 @@ const StandingsWildCard = ({ records, conference }) => {
     'OT',
     'PTS',
     'P%',
+    'RW',
     'ROW',
     'GF',
     'GA',
-    'Diff',
-    'Streak',
+    'DIFF',
+    'STRK',
   ]
 
   const divisions = records.map((record) => {

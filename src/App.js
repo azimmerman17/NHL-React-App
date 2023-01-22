@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 import Home from './Components/Home';
 import Scores from './Components/Scores';
-import Standings from './Components/Standings';
+import Standings from './Components/standings/Standings';
 import './App.css';
 
 import { StandingsData } from './Models/StandingsData';

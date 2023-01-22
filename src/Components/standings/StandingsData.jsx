@@ -1,6 +1,6 @@
 const StandingsData = ({ teamRecord, stats }) => {
   const data = stats.map((stat) => {
-    const { divisionRank, team, gamesPlayed, leagueRecord, points, pointsPercentage, row, goalsScored, goalsAgainst, streak, wildCardRank, conferenceRank, leagueRank } = teamRecord
+    const { divisionRank, team, gamesPlayed, leagueRecord, points, pointsPercentage, regulationWins, row, goalsScored, goalsAgainst, streak, wildCardRank, conferenceRank, leagueRank } = teamRecord
     const { name } = team
     const { wins, losses, ot } = leagueRecord
     const { streakCode } = streak
@@ -28,16 +28,18 @@ const StandingsData = ({ teamRecord, stats }) => {
         return <td key={`${name}-points`} className='standings-table'>{points}</td>
       case 'P%' :
         return <td key={`${name}-pointsPercentage`} className='standings-table'>{`${(pointsPercentage * 100).toFixed(2)}%`}</td>
-      case 'ROW' :
+        case 'RW' :
+          return <td key={`${name}-rw`} className='standings-table'>{regulationWins}</td>  
+        case 'ROW' :
         return <td key={`${name}-row`} className='standings-table'>{row}</td>
       case 'GF' :
         return <td key={`${name}-goalsScored`} className='standings-table'>{goalsScored}</td>
       case 'GA' :
         return <td key={`${name}-goalsAgainst`} className='standings-table'>{goalsAgainst}</td>
-      case 'Diff' :
+      case 'DIFF' :
         return <td key={`${name}-diff`} className='standings-table'>{goalsScored - goalsAgainst}</td>
-      case 'Streak' :
-        return <td key={`${name}-streakCode`} className='standings-table'>{streakCode}</td>
+      case 'STRK' :
+        return <td key={`${name}-STRKCode`} className='standings-table'>{streakCode}</td>
       default:
         return <td key={`${team}-bad`} className='standings-table'>MISSING</td>
     }

@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Stack from 'react-bootstrap/Stack';
 
 
-import { StandingsData } from "../Models/StandingsData"
-import RemoveDuplicates from './RemoveDuplicates';
+import { StandingsData } from "../../Models/StandingsData"
+import RemoveDuplicates from '../RemoveDuplicates';
 import StandingsButton from "./StandingsButtons"
 import StandingsDivisional from './StandingsDivisional';
 import StandingsWildCard from './StandingsWildCards';

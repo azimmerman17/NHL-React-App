@@ -25,11 +25,12 @@ const StandingsConference = ({ records, conference }) => {
     'OT',
     'PTS',
     'P%',
+    'RW',
     'ROW',
     'GF',
     'GA',
-    'Diff',
-    'Streak',
+    'DIFF',
+    'STRK',
   ]
 
   return (

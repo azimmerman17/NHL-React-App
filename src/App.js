@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 import Home from './Components/Home';
-import Scores from './Components/Scores';
+import Scores from './Components/scores/Scores';
 import Standings from './Components/standings/Standings';
 import './App.css';
 
@@ -15,20 +15,20 @@ function App() {
     <div className="App">
       <Router>
         <header>
-          <Navbar bg="light" expand="lg">
+          <Navbar className="text-white" bg="dark" variant="dark" expand="lg">
             <Container>
-              <Navbar.Brand href="/"><h1>&#127954; NHL</h1></Navbar.Brand>
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Brand className="text-white" href="/"><h1>&#127954; NHL</h1></Navbar.Brand>
+              <Navbar.Toggle className="text-white" aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                  <Nav.Link href="/scores">Scores</Nav.Link>
-                  <Nav.Link href="/standings">Standings</Nav.Link> 
+                  <Nav.Link className="text-white" href="/scores">Scores</Nav.Link>
+                  <Nav.Link className="text-white" href="/standings">Standings</Nav.Link> 
                 </Nav>
               </Navbar.Collapse>
             </Container>
           </Navbar>
         </header>
-        <main>
+        <main className="p-3">
           <Routes>
             <Route exact path='/' element={<Home />} />
             <Route path='/scores' element={<Scores />} />
@@ -36,7 +36,6 @@ function App() {
           </Routes>
         </main>
       </Router>
-
     </div>
   );
 }

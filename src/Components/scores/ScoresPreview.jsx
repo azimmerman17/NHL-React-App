@@ -58,8 +58,7 @@ const ScoresPreview = ({ game }) => {
   
 
   return (
-    <div>
-      <Container fluid>
+    <Container fluid style={{width: '95%', padding: '0'}}>
       <Row>
         <Col xs={4} md={4}>
           <Row style={{height: '50%'}}>
@@ -109,7 +108,6 @@ const ScoresPreview = ({ game }) => {
         </Col>
       </Row>
     </Container>
-  </div>
   )
 }
 

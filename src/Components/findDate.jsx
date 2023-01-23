@@ -1,7 +1,6 @@
 const findDate = (date, offset) => {
   let newDate = new Date(date)
   newDate.setDate(newDate.getDate() + offset)
-  console.log(newDate)
   let day = newDate.getUTCDay()
   let month = newDate.getUTCMonth()
   let dte = newDate.getUTCDate()

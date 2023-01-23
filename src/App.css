@@ -1,8 +1,32 @@
 
 .App {
-  text-align: center;
+  /* text-align: center; */
   background-color: lightgrey;
 }
+
+h2,
+h3 {
+  text-align: center;
+}
+
+.standings-table {
+  font-size: small;
+  text-align: center;
+}
+
+.team-name {
+  text-align: left;
+  max-width: 300px;
+  min-width: 75px;
+  font-size: small;
+}
+
+main {
+  width: 90%;
+  margin: auto;
+  background-color: whitesmoke;
+}
+
 
 .App-logo {
   height: 40vmin;
@@ -38,21 +62,3 @@
     transform: rotate(360deg);
   }
 }
-
-.standings-table {
-  font-size: small;
-}
-
-.team-name {
-  text-align: left;
-  max-width: 300px;
-  min-width: 75px;
-  font-size: small;
-}
-
-main {
-  width: 90%;
-  margin: auto;
-  background-color: whitesmoke;
-}
-

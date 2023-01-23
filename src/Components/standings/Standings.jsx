@@ -71,7 +71,7 @@ const Standings = () => {
 
   return (
     <Stack gap={3}>
-      <h4>{`${radioNme} Standings`}</h4>
+      <h2>{`${radioNme} Standings`}</h2>
       <StandingsButton radioNme={radioNme} setRadioNme={setRadioNme}/> 
       {standings}
     </Stack>

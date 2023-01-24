@@ -3,52 +3,21 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import ScoresTeams from './ScoresTeams';
-
+import ScoresTime from './ScoresTime';
 
 const ScoresCard = ({ game }) => {
   const { gamePk, linescore, gameDate, broadcasts, status } = game
   const { abstractGameState } = status
   let { teams } = game
-  
-  const team = () => {
     if (abstractGameState !== 'Preview' ) {
       teams = linescore.teams
     }
-    return (
-      <ScoresTeams teams={teams} abstractGameState={abstractGameState}/>
-    )
-  }
-
 
   return (
     <Container fluid style={{width: '95%', padding: '0'}}>
       <Row>
-        {team()}
-            {/* TEAMS */}
-      {/* <Col xs={4} md={4}>
-          <Row style={{height: '50%'}}>
-            <Col>
-              {team(away)}
-              {record(away)}
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              {team(home)}
-              {record(home)}
-            </Col>
-          </Row>
-        </Col> */}
-
-        {/* TIME */}
-        {/* <Col xs={1} md={1}>
-          <Row>
-            <Col>{getTime(gameDate)}</Col>
-          </Row>
-          <Row>
-            <Col className='mt-1'>{media()}</Col>
-          </Row>
-        </Col> */}
+        <ScoresTeams teams={teams} abstractGameState={abstractGameState}/>
+        <ScoresTime gameDate={gameDate} broadcasts={broadcasts} abstractGameState={abstractGameState} linescore={linescore} />
 
         {/* GOALS */}
         {/* <Col xs={6} md={6} >
@@ -77,9 +46,6 @@ const ScoresCard = ({ game }) => {
             </Col>
           </Row>
         </Col> */}
-
-
-
       </Row>
     </Container>
   )

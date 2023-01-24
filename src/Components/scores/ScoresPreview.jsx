@@ -55,8 +55,6 @@ const ScoresPreview = ({ game }) => {
     return <h6 className='align-baseline'>{abbreviation}</h6>
   })
   
-  
-
   return (
     <Container fluid style={{width: '95%', padding: '0'}}>
       <Row>

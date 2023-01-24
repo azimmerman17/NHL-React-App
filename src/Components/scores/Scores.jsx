@@ -7,7 +7,6 @@ import ScoresCard from './ScoresCard';
 const Scores = () => {
   const { games, date } = ScoresData.dates[0]
 
-
   let scoreboard = games.map((game) => {
     const { gamePk, teams, status } = game
       const { away, home} = teams

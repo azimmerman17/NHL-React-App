@@ -1,7 +1,7 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const ScoresGoals = ({ teams, scoringPlays }) => {
+const ScoresGoals = ({ teams, scoringPlays, currentPeriod, abstractGameState }) => {
   const { home, away } = teams
   const homeTeam = home.team.name
   let homeGoals = {
@@ -56,15 +56,17 @@ const ScoresGoals = ({ teams, scoringPlays }) => {
     return res
   }
   
-  const periodscores = (team, i) => {
+  const periodscores = (team) => {
     const res = periods.map((period, i) => {
-      return (
-        <div key={i} style={{display: 'inline', color: '#777'}} className='m-0 p-0'>
-          <small>{period}: </small>
-          {goalScorers(team, period)}
-          <small> | </small>
-        </div>
-      )
+      if (currentPeriod > i) {
+        return (
+          <div key={i} style={{display: 'inline', color: '#777'}} className='m-0 p-0'>
+            <small>{period}: </small>
+            {goalScorers(team, period)}
+            <small> | </small>
+          </div>
+        )
+      }
     })
     return res
   }

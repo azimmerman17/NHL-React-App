@@ -22,9 +22,16 @@ h3 {
 }
 
 main {
-  width: 90%;
+  width: 80%;
   margin: auto;
-  background-color: whitesmoke;
+  background-color: white;
+}
+
+.vl {
+  border-right: 5px solid darkgrey;
+  width: 5px !important;
+  margin: 0 !important;
+  padding: 0!important;
 }
 
 

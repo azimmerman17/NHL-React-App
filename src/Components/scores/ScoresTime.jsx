@@ -4,13 +4,13 @@ import getTime from '../getTime';
 
 const ScoresTime = ({ gameDate, broadcasts, abstractGameState, linescore }) => {
   const  { currentPeriodOrdinal, currentPeriodTimeRemaining, currentPeriod } =linescore
-  console.log(abstractGameState)
+
   const media = () => {
     let tv = ['ESPN+'] 
     broadcasts.forEach((broadcast) => {
       const { name, type, site } = broadcast
         if (type === 'national'  && site !== 'nhlCA') {
-          tv =  [...tv, ` ${name}`]
+          tv =  [...tv, name]
         }
         if (name === 'TNT' || name === 'NHLN') {
           tv.shift()
@@ -22,7 +22,7 @@ const ScoresTime = ({ gameDate, broadcasts, abstractGameState, linescore }) => {
   switch (abstractGameState) {
     case 'Preview':
       return (
-        <Col xs={1} md={1}>
+        <Col xs={1} md={1} className='text-end me-3'>
           <Row>
             <Col>{getTime(gameDate)}</Col>
           </Row>
@@ -33,7 +33,7 @@ const ScoresTime = ({ gameDate, broadcasts, abstractGameState, linescore }) => {
       )
     case 'Live':
       return (
-        <Col xs={1} md={1}>
+        <Col xs={1} md={1} className='text-end me-3'>
           <Row>
             <Col>{currentPeriodOrdinal}</Col>
           </Row>
@@ -44,7 +44,7 @@ const ScoresTime = ({ gameDate, broadcasts, abstractGameState, linescore }) => {
       )
     case 'Final':
       return (
-        <Col xs={1} md={1}>
+        <Col xs={1} md={1} className='text-end me-3'>
           <Row>
             <Col>Final</Col>
           </Row>

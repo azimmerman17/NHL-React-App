@@ -16,7 +16,7 @@ const ScoresTeams = ({ teams, abstractGameState }) => {
 
   const team = ((team) => {
     const { name } = team.team
-    const { score, goals } = team
+    const { goals } = team
     
       return (
         <Row>
@@ -60,7 +60,7 @@ const ScoresTeams = ({ teams, abstractGameState }) => {
   })
 
   return (
-       <Col xs={11} md={4}>
+       <Col xs={11} md={3}>
           <Row style={{height: '50%'}}>
             <Col>
               {team(away)}

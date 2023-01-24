@@ -4,21 +4,24 @@ import Col from 'react-bootstrap/Col';
 
 import ScoresTeams from './ScoresTeams';
 import ScoresTime from './ScoresTime';
+import ScoresGoals from './ScoresGoals';
+import ScoresNav from './ScoresNav'
 
 const ScoresCard = ({ game }) => {
-  const { gamePk, linescore, gameDate, broadcasts, status } = game
+  const { gamePk, teams, linescore, gameDate, broadcasts, status, scoringPlays } = game
   const { abstractGameState } = status
-  let { teams } = game
-    if (abstractGameState !== 'Preview' ) {
-      teams = linescore.teams
-    }
 
   return (
     <Container fluid style={{width: '95%', padding: '0'}}>
-      <Row>
-        <ScoresTeams teams={teams} abstractGameState={abstractGameState}/>
+      <Row className='px-2'>
+        {
+          (abstractGameState === 'Preview' ) ? 
+          <ScoresTeams teams={teams} abstractGameState={abstractGameState} /> :
+          <ScoresTeams teams={linescore.teams} abstractGameState={abstractGameState} />
+        }
         <ScoresTime gameDate={gameDate} broadcasts={broadcasts} abstractGameState={abstractGameState} linescore={linescore} />
-
+       <div className='vl'></div> 
+        <ScoresGoals teams={teams} scoringPlays={scoringPlays} />
         {/* GOALS */}
         {/* <Col xs={6} md={6} >
           <Row style={{height: '50%'}}>
@@ -32,7 +35,7 @@ const ScoresCard = ({ game }) => {
             </Col>
           </Row>
         </Col> */}
-
+        <ScoresNav />
         {/* BUTTONS */}
         {/* <Col xs={1} md={1}>
           <Row style={{height: '50%'}}>

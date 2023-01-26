@@ -1,8 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Stack from 'react-bootstrap/Stack';
 
-
-import { StandingsData } from "../../Models/StandingsData"
 import RemoveDuplicates from '../RemoveDuplicates';
 import StandingsButton from "./StandingsButtons"
 import StandingsDivisional from './StandingsDivisional';
@@ -11,17 +9,23 @@ import StandingsConference from './StandingConference';
 import StandingsPlayoffs from './StandingsPlayoffs';
 import StandingsLeague from './StandingsLeague';
 
-const Standings = () => {
-  const { records } = StandingsData
-
-  const [radioNme, setRadioNme] = useState('Divisional');
-
+const Standings = ({ data, setPath, setTitle }) => {
+  const { records } = data
+  const link ='api/v1/standings'
+  const [radioNme, setRadioNme] = useState('Divisional')
   let conferences = []
-  records.forEach(record => {
-    const { name } = record.conference
-    conferences.push(name)
-  })
-  RemoveDuplicates(conferences.sort())
+  
+  try {
+    records.forEach(record => {
+      const { name } = record.conference
+      conferences.push(name)
+    })
+    RemoveDuplicates(conferences.sort())
+  }
+  catch (error) {
+    console.log(error)
+    setPath(link)
+  }
 
   if(radioNme === 'League') {
     conferences = ['NHL']
@@ -66,8 +70,6 @@ const Standings = () => {
       //   ) 
     }
   })
-
-
 
   return (
     <Stack gap={3}>

@@ -23,20 +23,7 @@ const ScoresCard = ({ game }) => {
         <ScoresTime gameDate={gameDate} broadcasts={broadcasts} abstractGameState={abstractGameState} linescore={linescore} />
        <div className='vl'></div> 
         <ScoresGoals teams={teams} scoringPlays={scoringPlays} currentPeriod={currentPeriod} abstractGameState={abstractGameState}/>
-        {/* GOALS */}
-        {/* <Col xs={6} md={6} >
-          <Row style={{height: '50%'}}>
-            <Col className='align-baseline'>
-              {abbr(away)}
-            </Col>
-          </Row>
-          <Row style={{height: '50%'}}>
-            <Col>
-            {abbr(home)}
-            </Col>
-          </Row>
-        </Col> */}
-        <ScoresNav />
+        {/* <ScoresNav /> */}
         {/* BUTTONS */}
         {/* <Col xs={1} md={1}>
           <Row style={{height: '50%'}}>

@@ -14,16 +14,18 @@ import { StandingsData } from './Models/StandingsData';
 function App() {
   let [data, setData] = useState({})
   let [path, setPath] = useState('')
-  let [title, setTitle] = useState('NHL APP')
+  let [title, setTitle] = useState('APP')
 
   useEffect(() => {
-    document.title = title
+    document.title = `NHL ${title}`
+  }, [title])
+
+  useEffect(() => {
     const fetchData = async () => {
       const BASE_URL = 'https://statsapi.web.nhl.com/'
       const url = BASE_URL + path
       const response = await fetch(url)     
       const data = await response.json()
-      console.log(data)
       setData(data)
     }
     if (path.length > 0) {
@@ -51,8 +53,8 @@ function App() {
         <main className="p-3" style={{marginTop: '75px'}}>
           <Routes>
             <Route exact path='/' element={<Home />} />
-            <Route path='/scores' element={<Scores />} />
             <Route path='/standings' element={<Standings data={data} setPath={setPath} setTitle={setTitle} />} />
+            <Route path='/scores' element={<Scores data={data} setPath={setPath} setTitle={setTitle} />} />
           </Routes>
         </main>
       </Router>

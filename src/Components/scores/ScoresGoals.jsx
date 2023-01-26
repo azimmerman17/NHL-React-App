@@ -51,7 +51,7 @@ const ScoresGoals = ({ teams, scoringPlays, currentPeriod, abstractGameState }) 
           goalTotal = seasonTotal
         }        
       })
-      return <small  style={{color: 'black'}}>{scorer} {periodTime} ({goalTotal}) </small>
+      return <small  key={`${scorer} ${goalTotal}`} style={{color: 'black'}}>{scorer} {periodTime} ({goalTotal}) </small>
     })
     return res
   }

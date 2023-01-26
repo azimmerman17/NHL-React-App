@@ -10,9 +10,9 @@ const ScoresTime = ({ gameDate, broadcasts, abstractGameState, linescore }) => {
     broadcasts.forEach((broadcast) => {
       const { name, type, site } = broadcast
         if (type === 'national'  && site !== 'nhlCA') {
-          tv =  [...tv, name]
+          tv =  [...tv, ` ${name}`]
         }
-        if (name === 'TNT' || name === 'NHLN') {
+        if (name === 'TNT' || name === 'NHLN' || name === 'ESPN+') {
           tv.shift()
         }
     })

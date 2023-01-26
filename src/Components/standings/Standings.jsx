@@ -14,6 +14,10 @@ const Standings = ({ data, setPath, setTitle }) => {
   const link ='api/v1/standings'
   const [radioNme, setRadioNme] = useState('Divisional')
   let conferences = []
+
+  useEffect(() => {
+    setTitle(`${radioNme} Standings`)
+  },[radioNme])
   
   try {
     records.forEach(record => {
@@ -30,6 +34,8 @@ const Standings = ({ data, setPath, setTitle }) => {
   if(radioNme === 'League') {
     conferences = ['NHL']
   }
+
+
 
   const standings = conferences.map((conference, i) => {
     switch (radioNme) {

@@ -56,20 +56,22 @@ const ScoresGoals = ({ teams, scoringPlays, currentPeriod, abstractGameState }) 
     return res
   }
   
-  const periodscores = (team) => {
-    const res = periods.map((period, i) => {
-      if (currentPeriod > i) {
-        return (
-          <div key={i} style={{display: 'inline', color: '#777'}} className='m-0 p-0'>
-            <small>{period}: </small>
-            {goalScorers(team, period)}
-            <small> | </small>
-          </div>
-        )
-      }
-    })
-    return res
-  }
+  const periodscores = (team) => { 
+      if (abstractGameState !== 'Preview') {
+      const res = periods.map((period, i) => {
+        if (currentPeriod > i) {
+          return (
+            <div key={i} style={{display: 'inline', color: '#777'}} className='m-0 p-0'>
+              <small>{period}: </small>
+              {goalScorers(team, period)}
+              <small> | </small>
+            </div>
+          )
+        }
+      })
+      return res
+    }
+    }
     
   const teamabbr = (team) => {
     const { abbreviation } = team.team

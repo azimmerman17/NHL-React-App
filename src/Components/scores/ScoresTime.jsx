@@ -38,7 +38,7 @@ const ScoresTime = ({ gameDate, broadcasts, abstractGameState, linescore }) => {
             <Col>{currentPeriodOrdinal}</Col>
           </Row>
           <Row>
-            <Col className='mt-1'>{currentPeriodTimeRemaining === 'END' ? 'Int' : currentPeriodTimeRemaining}</Col>
+            <Col className='mt-1'>{currentPeriodTimeRemaining}</Col>
           </Row>
         </Col>
       )

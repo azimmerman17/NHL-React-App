@@ -8,7 +8,6 @@ const ScoresNav = ({ gamePk, epg }) => {
     const result = epg.filter(item => item.title === video)
     const { items, title } = result[0]
     const item = items.filter(item => item.id)
-    console.log(item[0].id)
     if (item[0].id) {
       const { id } = item[0]
 

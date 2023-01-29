@@ -1,7 +1,6 @@
 import Button from "react-bootstrap/Button"
 import { SlArrowRight, SlArrowLeft } from 'react-icons/sl'
 
-
 import findDate from "../findDate"
 
 const ScoresDate = ({ date }) => {
@@ -9,7 +8,9 @@ const ScoresDate = ({ date }) => {
 
   const setDate  = (offset) => {
     let currDate = new Date(date)
-    let newDate = `${currDate.getUTCFullYear()}-${currDate.getUTCMonth() + 1}-${currDate.getUTCDate() + offset}`
+    let changeDate = new Date(currDate.getTime() + (86400000 * offset))  
+    let newDate = `${changeDate.getUTCFullYear()}-${changeDate.getUTCMonth() + 1}-${changeDate.getUTCDate()}`
+    
     return newDate
     
   }

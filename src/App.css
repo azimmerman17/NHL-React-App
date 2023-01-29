@@ -1,7 +1,7 @@
 
 .App {
   /* text-align: center; */
-  background-color: lightgrey;
+  background-color: #ececec;
 }
 
 h2,
@@ -22,7 +22,7 @@ h3 {
 }
 
 main {
-  width: 80%;
+  width: 90%;
   margin: auto;
   background-color: white;
 }

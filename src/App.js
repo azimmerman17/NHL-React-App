@@ -41,7 +41,9 @@ function App() {
           <Routes>
             <Route exact path='/' element={<Home />} />
             <Route path='/standings' element={<Standings data={data} setPath={setPath} setTitle={setTitle} />} />
-            <Route path='/scores' element={<Scores data={data} setPath={setPath} setTitle={setTitle} />} />
+            {/* <Route path='/scores' element={<Scores data={data} setPath={setPath} setTitle={setTitle} />} /> */}
+            <Route path='/scores/:gameDate' element={<Scores data={data} setPath={setPath} setTitle={setTitle} />} />
+
             <Route path='/games/:gameId' element={<Games data={data} setPath={setPath} setTitle={setTitle} />} />
           </Routes>
         </main>

@@ -1,28 +1,27 @@
 import Stack from 'react-bootstrap/Stack';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import ScoresDate  from './ScoresDate'
 import ScoresCard from './ScoresCard';
-import formatDate from '../formatDate';
 
 const Scores = ({ data, setPath, setTitle }) => {
-  let [dateObj, changeDateObj] = useState() //may need later?
-  let [gameDate, setDate] = useState('')
+  const { gameDate } = useParams()
   let gameData = []
-  let pathDate 
+  let defaultDate = gameDate ? gameDate : undefined
 
   const fetchData = () => {
-    if (!dateObj) {
+    if (!gameDate) {
       setPath(`api/v1/schedule?hydrate=team,linescore,broadcasts(all),game(content(media(epg)),seriesSummary),radioBroadcasts,metadata,seriesSummary(series),scoringplays,decisions`)
     }
     else {
-      setPath(`api/v1/schedule?startDate=${pathDate}&endDate=${pathDate}&hydrate=team,linescore,broadcasts(all),game(content(media(epg)),seriesSummary),radioBroadcasts,metadata,seriesSummary(series),scoringplays,decisions`)
+      setPath(`api/v1/schedule?startDate=${gameDate}&endDate=${gameDate}&hydrate=team,linescore,broadcasts(all),game(content(media(epg)),seriesSummary),radioBroadcasts,metadata,seriesSummary(series),scoringplays,decisions`)
     }
   }
 
   try {
     const { games, date } = data.dates[0]
-    pathDate = date
+    defaultDate = date
     games.forEach(game => {
       gameData.push(game)
     });
@@ -32,11 +31,9 @@ const Scores = ({ data, setPath, setTitle }) => {
   }
 
   useEffect(() => {
-    setTitle(`Scores - ${gameDate}`)
+    setTitle(`Scores - ${defaultDate}`)
     fetchData()
-    setDate(pathDate)
-
-  },[dateObj])
+  },[])
   
 
 let scoreboard = gameData.map((game) => {
@@ -54,7 +51,7 @@ let scoreboard = gameData.map((game) => {
     <Stack gap={3}>
       <h2>Scores</h2>
       <hr/>
-      <ScoresDate date={pathDate} changeDateObj={changeDateObj} />
+      <ScoresDate date={defaultDate} />
       <hr/>
       {scoreboard}
     </Stack>

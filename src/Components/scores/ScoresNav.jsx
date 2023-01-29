@@ -8,11 +8,11 @@ const ScoresNav = ({ gamePk, epg }) => {
     const result = epg.filter(item => item.title === video)
     const { items, title } = result[0]
     const item = items.filter(item => item.id)
-    if (item[0].id) {
+    if (item[0]) {      
       const { id } = item[0]
 
       return (
-        <Button href={`https://www.nhl.com/video/c-${id}`} target='_blank' variant='outline-secondary' style={{width: '125%', height: '100%'}}>
+        <Button href={`https://www.nhl.com/video/c-${title}`} target='_blank' variant='outline-secondary' style={{width: '125%', height: '100%'}}>
           <small> {title === 'Extended Highlights' ? 'Long Recap' : title}</small>
         </Button>  
       )

@@ -1,12 +1,16 @@
+import Button from "react-bootstrap/Button"
+import { SlArrowRight, SlArrowLeft } from 'react-icons/sl'
+
+
 import findDate from "../findDate"
 
-const ScoresDate = ({ date, changeDateObj }) => {
-  const offsets = [0] 
+const ScoresDate = ({ date }) => {
+  const offsets = [-1, 0, 1] 
 
   const setDate  = (offset) => {
     let currDate = new Date(date)
     let newDate = `${currDate.getUTCFullYear()}-${currDate.getUTCMonth() + 1}-${currDate.getUTCDate() + offset}`
-    changeDateObj(new Date(newDate))
+    return newDate
     
   }
 
@@ -14,7 +18,7 @@ const ScoresDate = ({ date, changeDateObj }) => {
     if (offset === 0) {
       return <h4 className='px-5 m-0' key={offset}>{findDate(date, offset)}</h4>
     }
-    return <button onClick={(e) => setDate(offset)} className='px-5 m-0' key={offset}>{offset}</button>
+return <Button href={`${setDate(offset)}`} className='px-5 m-0' variant='secondary' key={offset}>{offset > 0 ? <SlArrowRight /> : <SlArrowLeft />}</Button>
   })
 
   return (

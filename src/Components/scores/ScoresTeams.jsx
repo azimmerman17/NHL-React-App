@@ -1,6 +1,8 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import styleColor from '../styleColor';
+
 const ScoresTeams = ({ teams, abstractGameState }) => {
   const { home, away } = teams
 
@@ -15,14 +17,15 @@ const ScoresTeams = ({ teams, abstractGameState }) => {
   }
 
   const team = ((team) => {
-    const { name } = team.team
+    const { name, powerPlay, goaliePulled } = team.team
     const { goals } = team
     
       return (
         <Row>
           <Col>
-            <h5 className='mb-0 mt-2'>
-              {name}
+          {/* style={{color: (powerPlay === true ? 'red' : 'black')}}> */}
+            <h5 className='mb-0 mt-2' >
+              {name} {powerPlay === true ? <small>pp</small> : null} {goaliePulled === true ?  <small>en</small> : null}
             </h5>
           </Col>
           {abstractGameState !== 'Preview' ? points(goals) : null}

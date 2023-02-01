@@ -41,28 +41,28 @@ const Standings = ({ data, setPath, setTitle }) => {
     switch (radioNme) {
       case 'Divisional':
         return (
-          <div key={`${conference}-Conference`}>
+          <div key={`${conference}-Conference`} className='bg-white text-center p-2 shadow rounded'>
             <h3>{conference} Conference</h3>
               <StandingsDivisional records={records} conference={conference}/>
           </div>
         ) 
       case 'Wild Card':
         return (
-          <div key={`${conference}-Conference`}>
+          <div key={`${conference}-Conference`} className='bg-white text-center p-2 shadow rounded'>
             <h3>{conference} Conference</h3>
             <StandingsWildCard records={records} conference={conference}/>
           </div>
         ) 
       case 'Conference':
         return (
-          <div key={`${conference}-Conference`}>
+          <div key={`${conference}-Conference`} className='bg-white text-center p-2 shadow rounded'>
             <h3>{conference} Conference</h3>
             <StandingsConference records={records} conference={conference}/>
           </div>
         )
       case 'League':
         return (
-          <div key={`${conference}`}>
+          <div key={`${conference}`} className='bg-white text-center p-2 shadow rounded'>
             <StandingsLeague records={records} conference={conference}/>
           </div>
           )
@@ -78,9 +78,11 @@ const Standings = ({ data, setPath, setTitle }) => {
   })
 
   return (
-    <Stack gap={3}>
-      <h2>{`${radioNme} Standings`}</h2>
-      <StandingsButton radioNme={radioNme} setRadioNme={setRadioNme}/> 
+    <Stack gap={3} >
+      <Stack className='bg-white text-center p-2 shadow rounded' gap={3} >
+        <h2 >{`${radioNme} Standings`}</h2>
+        <StandingsButton radioNme={radioNme} setRadioNme={setRadioNme} /> 
+      </Stack>
       {standings}
     </Stack>
 

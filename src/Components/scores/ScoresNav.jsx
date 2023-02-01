@@ -2,9 +2,18 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
-const ScoresNav = ({ gamePk, epg }) => {
+const ScoresNav = ({ gamePk, content }) => {
+  let highlights = true
+  try {
+    const { epg } = content.media
+  } catch (error){
+    console.log('No highlights package')
+    highlights = false
+  }
+
 
   const media = (video) => {
+    const { epg } = content.media
     const result = epg.filter(item => item.title === video)
     const { items, title } = result[0]
     const item = items.filter(item => item.id)
@@ -12,7 +21,7 @@ const ScoresNav = ({ gamePk, epg }) => {
       const { id } = item[0]
 
       return (
-        <Button href={`https://www.nhl.com/video/c-${title}`} target='_blank' variant='outline-secondary' style={{width: '125%', height: '100%'}}>
+        <Button href={`https://www.nhl.com/video/c-${id}`} target='_blank' variant='outline-secondary' style={{width: '125%', height: '100%'}}>
           <small> {title === 'Extended Highlights' ? 'Long Recap' : title}</small>
         </Button>  
       )
@@ -35,12 +44,12 @@ const ScoresNav = ({ gamePk, epg }) => {
       <Col>
         <Row style={{height: '50%'}}>
           <Col className='m-0 p-0'>
-            {media('Extended Highlights')}
+            {highlights ? media('Extended Highlights') : null}
           </Col>
         </Row>
         <Row style={{height: '50%'}}>
           <Col className='m-0 p-0'>
-            {media('Recap')}
+          {highlights ? media('Recap') : null}
           </Col>
         </Row>
       </Col>

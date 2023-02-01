@@ -3,7 +3,6 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 
 const StandingsButton = ({ radioNme, setRadioNme }) => {
-    // const [radioValue, setRadioValue] = useState('Divisional');
   
     const radios = [
       { nme: 'Divisional' },
@@ -15,7 +14,7 @@ const StandingsButton = ({ radioNme, setRadioNme }) => {
   
     return (
       <>
-        <ButtonGroup>
+        <ButtonGroup className='bg-white'>
           {
             radios.map((radio, i) => {
               const { nme} = radio

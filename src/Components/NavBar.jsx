@@ -6,9 +6,9 @@ import { MdSportsHockey } from 'react-icons/md'
 
 const NavBar = () => {
   return (
-    <Navbar fixed="top" className="text-white" bg="dark" variant="dark" expand="lg">
+    <Navbar fixed="top" bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand className="text-white" href="/"><h1><MdSportsHockey /> NHL</h1></Navbar.Brand>
+        <Navbar.Brand className="text-white" href="/"><h2><MdSportsHockey /> NHL</h2></Navbar.Brand>
         <Navbar.Toggle className="text-white" aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

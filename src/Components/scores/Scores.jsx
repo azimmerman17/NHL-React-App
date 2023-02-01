@@ -40,19 +40,19 @@ let scoreboard = gameData.map((game) => {
   const { gamePk } = game
 
   return (
-    <div key={gamePk}>
+    <div key={gamePk} className='bg-white text-center p-2 shadow rounded'>
       <ScoresCard game={game} />
-      <hr/>
     </div>
   )
 }) 
 
   return (
-    <Stack gap={3}>
-      <h2>Scores</h2>
-      <hr/>
-      <ScoresDate date={defaultDate} />
-      <hr/>
+    <Stack gap={2}>
+      <Stack gap={2} className='bg-white text-center p-2 shadow rounded' >
+        <h2>Scores</h2>
+        <hr/>
+        <ScoresDate date={defaultDate} />
+      </Stack>
       {scoreboard}
     </Stack>
   )

@@ -9,7 +9,7 @@ import ScoresNav from './ScoresNav'
 
 const ScoresCard = ({ game }) => {
   const { gamePk, teams, linescore, gameDate, broadcasts, status, scoringPlays, content } = game
-  const { epg } = content.media
+
   const { abstractGameState } = status
   const { currentPeriod } = linescore
 
@@ -24,7 +24,7 @@ const ScoresCard = ({ game }) => {
         <ScoresTime gameDate={gameDate} broadcasts={broadcasts} abstractGameState={abstractGameState} linescore={linescore} />
        <div className='vl'></div> 
         <ScoresGoals teams={teams} scoringPlays={scoringPlays} currentPeriod={currentPeriod} abstractGameState={abstractGameState}/>
-        <ScoresNav gamePk={gamePk} epg={epg} />
+        <ScoresNav gamePk={gamePk} content={content} />
       </Row>
     </Container>
   )

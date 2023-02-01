@@ -41,7 +41,7 @@ const ScoresTeams = ({ teams, abstractGameState }) => {
       <Row>
         <Col className='mb-2'>
           <small className='ps-2'>
-            {wins}-{losses}-{ot}<strong> {pts} pts</strong>
+            {wins}-{losses}{ot ? `-${ot}` : null}<strong> {pts ? `${pts} pts` : null}</strong>
           </small>
         </Col>
       </Row>

@@ -1,9 +1,15 @@
 import Button from "react-bootstrap/Button"
 import { SlArrowRight, SlArrowLeft } from 'react-icons/sl'
+import { useEffect } from "react"
 
 import findDate from "../findDate"
 
-const ScoresDate = ({ date }) => {
+const ScoresDate = ({ date, setTitle }) => {
+  
+  useEffect(() => {
+    setTitle(`Scores - ${(typeof date === 'string' ? date : `${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()}`)}`)
+  },[])
+
   const offsets = [-1, 0, 1] 
 
   const setDate  = (offset) => {
@@ -19,7 +25,7 @@ const ScoresDate = ({ date }) => {
     if (offset === 0) {
       return <h4 className='px-5 m-0' key={offset}>{findDate(date, offset)}</h4>
     }
-return <Button href={`${setDate(offset)}`} className='px-5 m-0' variant='secondary' key={offset}>{offset > 0 ? <SlArrowRight /> : <SlArrowLeft />}</Button>
+    return <Button href={`${setDate(offset)}`} className='px-5 m-0' variant='secondary' key={offset}>{offset > 0 ? <SlArrowRight /> : <SlArrowLeft />}</Button>
   })
 
   return (

@@ -1,7 +1,6 @@
 // Game 2022020804 --  2023-01-31 WSH @ CBJ  Per:2 TR: ~11:18
 
-
-export const GamesLive = {
+export const GamesDataLive = {
   "copyright": "NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2023. All Rights Reserved.",
   "gamePk": 2022020804,
   "link": "/api/v1/game/2022020804/feed/live",

@@ -31,29 +31,38 @@ const Scores = ({ data, setPath, setTitle }) => {
   }
 
   useEffect(() => {
-    setTitle(`Scores - ${defaultDate}`)
     fetchData()
   },[])
   
+// console.log(gameData.length)
+  let scoreboard = () => {
+    if (gameData.length === 0) {
+      return (
+        <div className='bg-white text-center p-2 shadow rounded'>
+          <h4>No Games Today</h4>
+        </div>
+      )
+    }
+    let games = gameData.map((game) => {
+      const { gamePk } = game
 
-let scoreboard = gameData.map((game) => {
-  const { gamePk } = game
-
-  return (
-    <div key={gamePk} className='bg-white text-center p-2 shadow rounded'>
-      <ScoresCard game={game} />
-    </div>
-  )
-}) 
+      return (
+        <div key={gamePk} className='bg-white text-center p-2 shadow rounded'>
+          <ScoresCard game={game} />
+        </div>
+      )
+    }) 
+    return games
+  }
 
   return (
     <Stack gap={2}>
       <Stack gap={2} className='bg-white text-center p-2 shadow rounded' >
         <h2>Scores</h2>
         <hr/>
-        <ScoresDate date={defaultDate} />
+        <ScoresDate date={!defaultDate ? new Date : defaultDate} setTitle={setTitle}/>
       </Stack>
-      {scoreboard}
+      {scoreboard()}
     </Stack>
   )
 }

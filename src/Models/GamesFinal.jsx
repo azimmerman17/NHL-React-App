@@ -1,6 +1,6 @@
 // Game 2022020799 -- 2023-01-29 BOS @ CAR
 
-export const GamesFinal = {
+export const GamesDataFinal = {
   "copyright": "NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2023. All Rights Reserved.",
   "gamePk": 2022020799,
   "link": "/api/v1/game/2022020799/feed/live",

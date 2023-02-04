@@ -5,14 +5,18 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 
-import { GamesPreview } from "../../Models/GamesPreview"
-import { GamesLive } from "../../Models/GamesLive"
-import { GamesFinal } from "../../Models/GamesFinal"
+import GamesPreview from "./GamesPreview"
+import GamesFinal from "./GamesFinal"
+
+import { GamesDataPreview } from "../../Models/GamesPreview"
+import { GamesDataLive } from "../../Models/GamesLive"
+import { GamesDataFinal } from "../../Models/GamesFinal"
+
 
 const Games = ({ data, setPath, setTitle }) => {
   let { gameId } = useParams()
   const link = `/api/v1/game/${gameId}/feed/live`
-  data = GamesPreview
+  data = GamesDataFinal
 
   //  // API CONNECTION
   // useEffect(() => {
@@ -34,25 +38,41 @@ const Games = ({ data, setPath, setTitle }) => {
   
   const render = () => {
     if (data.gameData) {
-      const { gamePk, gameData, liveData } = data
+      const { gamePk, gameData, liveData, boxscore } = data
+      const { status } = gameData
+      const { abstractGameState } = status
+      console.log(abstractGameState)
+
+      switch (abstractGameState) {
+        case 'Preview':
+          return (
+            <GamesPreview />
+          )
+          case 'Final':
+            return (
+              <GamesFinal boxscore={boxscore} />
+            )
+            default:
+            return (
+              <Stack gap={3} className='mt-3'>
+                <Container>
+                  <Row>
+                    <Col md={3}>
+                      <h2>TEAMS</h2>
+                    </Col>
+                    <Col>
+                      <h2>GAME</h2>
+                    </Col>
+                    <Col md={3}>
+                      <h2>PLAYERS</h2>
+                    </Col>
+                  </Row>
+                </Container>
+              </Stack>
+            )
+
+      }
   
-      return (
-        <Stack gap={3} className='mt-3'>
-          <Container>
-            <Row>
-              <Col md={3}>
-                <h2>TEAMS</h2>
-              </Col>
-              <Col>
-                <h2>GAME</h2>
-              </Col>
-              <Col md={3}>
-                <h2>PLAYERS</h2>
-              </Col>
-            </Row>
-          </Container>
-        </Stack>
-      )
     }
   }
   

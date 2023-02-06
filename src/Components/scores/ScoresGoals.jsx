@@ -44,15 +44,7 @@ const ScoresGoals = ({ teams, scoringPlays, currentPeriod, abstractGameState }) 
       let scorer = players.filter(player => player.playerType === 'Scorer')
       const { player, seasonTotal } = scorer[0]
       const { fullName } = player
-      // let goalTotal
-      // players.every(player => {
-      //   const { playerType, seasonTotal } = player
-      //   const { fullName } = player.player
-      //   if (playerType === 'Scorer') {
-      //     scorer = fullName
-      //     goalTotal = seasonTotal
-      //   }        
-      // })
+
       return <small  key={`${fullName} ${seasonTotal}`} style={{color: 'black'}}>{fullName} {periodTime} ({seasonTotal}) </small>
     })
     return res

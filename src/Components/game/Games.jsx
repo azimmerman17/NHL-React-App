@@ -38,10 +38,10 @@ const Games = ({ data, setPath, setTitle }) => {
   
   const render = () => {
     if (data.gameData) {
-      const { gamePk, gameData, liveData, boxscore } = data
+      const { gamePk, gameData, liveData } = data
+      const { boxscore } = liveData
       const { status } = gameData
       const { abstractGameState } = status
-      console.log(abstractGameState)
 
       switch (abstractGameState) {
         case 'Preview':
@@ -50,7 +50,7 @@ const Games = ({ data, setPath, setTitle }) => {
           )
           case 'Final':
             return (
-              <GamesFinal boxscore={boxscore} />
+              <GamesFinal liveData={liveData} />
             )
             default:
             return (

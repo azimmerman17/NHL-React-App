@@ -3,22 +3,32 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 
-const GamesFinal = ({ boxscore }) => {
-  console.log(boxscore)
+import GamesBoxscore from "./GamesBoxscore"
+import GamesScoring from "./GamesScoring"
+import GamesPenalties from "./GamesPenalties"
+
+const GamesFinal = ({ liveData }) => {
+  // console.log('liveData', liveData)
+  const { boxscore, linescore, plays } = liveData
+  const { teams } = boxscore
+  const { periods, hasShootout, currentPeriod } = linescore
+
   return (
     <Stack gap={3} className='mt-3'>
     <Container>
       <Row>
-        <Col md={10}>
+        <Col md={9}>
           <h2>Recap</h2>
           <h2>Team Stats + Box Score</h2>
           <h2> PLays by period</h2>
         </Col>
-        <Col md={2}>
-          <h2>BoxScore</h2>
-          <h2>Scoring</h2>
-          <h2>Penalties</h2>
-          <h2>Stars of the Game</h2>
+        <Col md={3}>
+          <Stack gap={2}>
+            <GamesBoxscore teams={teams} periods={periods} hasShootout={hasShootout} />
+            <GamesScoring plays={plays} currentPeriod={currentPeriod}/>
+            <GamesPenalties plays={plays} />
+            <h2>Stars of the Game</h2>
+          </Stack>
         </Col>
       </Row>
     </Container>

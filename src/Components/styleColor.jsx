@@ -1,5 +1,4 @@
 const styleColor= (team) => {
-  console.log(team)
   switch (team) {
     case 'Anaheim Ducks': 
       return '#ff6600'  // alt #111111

@@ -19,13 +19,21 @@ const Games = ({ data, setPath, setTitle }) => {
   data = GamesDataFinal
 
   //  // API CONNECTION
-  // useEffect(() => {
-  //   setTitle('away @ home')
+  useEffect(() => {
+    const { gameData } = data
+    const { teams } = gameData
+    const { home, away } = teams
+
+    const code = (team) => {
+      const { triCode } = team 
+      return triCode
+    }
+    setTitle(`Game - ${code(away)} @ ${code(home)}`)
   //   if (data === {}) {
   //     setPath(link)
   //   }
     
-  // },[data])
+  },[data])
 
   // try {
   //   const { teams } = data.gameData 

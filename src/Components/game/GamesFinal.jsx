@@ -26,7 +26,7 @@ const GamesFinal = ({ liveData }) => {
           <Stack gap={2}>
             <GamesBoxscore teams={teams} periods={periods} hasShootout={hasShootout} />
             <GamesScoring plays={plays} currentPeriod={currentPeriod}/>
-            <GamesPenalties plays={plays} />
+            <GamesPenalties plays={plays} currentPeriod={currentPeriod} />
             <h2>Stars of the Game</h2>
           </Stack>
         </Col>

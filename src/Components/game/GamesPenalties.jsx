@@ -1,18 +1,28 @@
 import Stack from "react-bootstrap/Stack"
+import GetEventArrey from "../GetEventArray"
 
-const GamesPenalties = ({ plays }) => {
+import GamesPenaltyCard from "./GamesPenaltyCard"
+
+const GamesPenalties = ({ plays, currentPeriod }) => {
   const { allPlays, penaltyPlays } = plays
+  const  periods = GetEventArrey(allPlays, penaltyPlays)
 
-  const penalties = penaltyPlays.map((penaltyPlay) => {
-    const penalty = allPlays[penaltyPlay]
-    const { id } = penalty.players[0].player   
-    // console.log('penalty', penalty)
-    return (
-      <div key={penaltyPlay} className='bg-white text-center p-2 shadow rounded'>
-        <img src={`https://cms.nhl.bamgrid.com/images/headshots/current/60x60/${id}.jpg`} />
-        <p></p>
-    </div>
-    )
+  let periodNames = [
+    '1st', 
+    '2nd',
+    '3rd',
+  ]
+
+  const penalties = periods.map((period, i) => {
+    if (i < currentPeriod) {
+      return (
+        <div key={i}>
+          <h6><small>{i < 4 ? `${periodNames[i]} Period` : 'Overtime'}</small></h6>
+          <GamesPenaltyCard period={period} />
+        </div>
+      )
+    }
+    return null
   })
 
   return (

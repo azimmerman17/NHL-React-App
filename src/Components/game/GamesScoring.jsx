@@ -1,29 +1,18 @@
 import Stack from "react-bootstrap/Stack"
+
 import GamesGoalCard from "./GamesGoalCard"
+import GetEventArrey from "../GetEventArray"
 
 
 const GamesScoring = ({ plays, currentPeriod }) => {
   const { allPlays, scoringPlays } = plays
-
-  let periods = [
-    [],   // 1st
-    [],   // 2nd
-    [],   // 3rd
-    [],   // OT
-  ]
+  const  periods = GetEventArrey(allPlays, scoringPlays)
 
   let periodNames = [
     '1st', 
     '2nd',
     '3rd',
   ]
-
-  scoringPlays.forEach(scoringPlay => {
-    const goal = allPlays[scoringPlay]
-    const { about } = goal
-    const { period } = about
-    periods[period - 1].push(goal)
-  });
 
   const goals = periods.map((period, i) => {
     if (i < currentPeriod) {

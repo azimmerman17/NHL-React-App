@@ -34,9 +34,8 @@ const GamesGoalCard = ({ period }) => {
             <p className='my-1' style={{fontSize: '12px'}}>{assist.length === 0 ? 'Unassisted' : assist.join(' ')}</p>
             <p className='my-1' style={{fontSize: '12px'}}>
               <span style={{color: styleColor(name)}}>{triCode} </span>
-              <span>| {periodTime} | </span>
-              <span>{ordinalNum}</span>
-              <span>{code === 'EVEN' ? null : `| ${code}`}</span>
+              <span>| {periodTime}</span>
+              <span>{code === 'EVEN' ? null : ` | ${code}`}</span>
             </p>
           </div>
       </div>

@@ -6,10 +6,11 @@ import Col from "react-bootstrap/Col"
 import GamesBoxscore from "./GamesBoxscore"
 import GamesScoring from "./GamesScoring"
 import GamesPenalties from "./GamesPenalties"
+import GamesStarsofGame from "./GamesStarsofGame"
 
 const GamesFinal = ({ liveData }) => {
   // console.log('liveData', liveData)
-  const { boxscore, linescore, plays } = liveData
+  const { boxscore, linescore, plays, decisions } = liveData
   const { teams } = boxscore
   const { periods, hasShootout, currentPeriod } = linescore
 
@@ -27,7 +28,7 @@ const GamesFinal = ({ liveData }) => {
             <GamesBoxscore teams={teams} periods={periods} hasShootout={hasShootout} />
             <GamesScoring plays={plays} currentPeriod={currentPeriod}/>
             <GamesPenalties plays={plays} currentPeriod={currentPeriod} />
-            <h2>Stars of the Game</h2>
+            <GamesStarsofGame decisions={decisions} teams={teams}/>
           </Stack>
         </Col>
       </Row>

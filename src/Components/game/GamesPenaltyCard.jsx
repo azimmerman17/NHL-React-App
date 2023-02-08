@@ -8,7 +8,6 @@ const GamesPenaltyCard = ({ period } ) => {
     const { periodTime  } = about
     const { eventCode, penaltyMinutes, penaltySeverity, secondaryType } = result
     const { name, triCode } = team
-    // const { code } = strength
     let penalizied 
     let playerId
 
@@ -22,9 +21,9 @@ const GamesPenaltyCard = ({ period } ) => {
     });
 
     return (
-      <div key={eventCode} className=' bg-white p-1 shadow rounded d-flex flex-row'>
+      <div key={eventCode} className='bg-white p-1 shadow rounded d-flex flex-row'>
           <div style={{width: '60px'}}>
-            <img className='rounded-circle border' src={`https://cms.nhl.bamgrid.com/images/headshots/current/60x60/${playerId}.jpg`} /> 
+            <img className='rounded-circle border' src={`https://cms.nhl.bamgrid.com/images/headshots/current/60x60/${playerId}.jpg`} alt='' /> 
           </div>
           <div className='mx-2 my-0'>
             <h6 className='my-1' style={{color: styleColor(name)}}>{penalizied}</h6>
@@ -38,8 +37,6 @@ const GamesPenaltyCard = ({ period } ) => {
     )
   })
 
-console.log(period)
-
   return (
     <Stack gap={1}>
       {period.length === 0 ? <p><small>No Penalties</small></p> : cards}
@@ -48,7 +45,3 @@ console.log(period)
 }
 
 export default GamesPenaltyCard
-
-// penalty time
-// major / minor
-// call

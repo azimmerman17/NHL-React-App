@@ -1,5 +1,6 @@
 import Table from "react-bootstrap/Table"
 
+import styleColor from "../styleColor"
 
 const GamesBoxscore = ({ teams, periods, hasShootout }) => {
   const { home, away } = teams
@@ -26,7 +27,7 @@ const GamesBoxscore = ({ teams, periods, hasShootout }) => {
     const  { teamStats } = team
     const { teamSkaterStats } = teamStats
     const { goals } = teamSkaterStats
-    const { triCode } = team.team
+    const { triCode, name } = team.team
 
     const scores = periods.map((period) => {
       const { home, away, ordinalNum } = period
@@ -35,7 +36,7 @@ const GamesBoxscore = ({ teams, periods, hasShootout }) => {
 
     return (
       <tr>
-        <th>{triCode}</th>
+        <th style={{color: styleColor(name)}}>{triCode}</th>
         {scores}
         {hasShootout ? <th>1 - 3</th> : null}
         <td>{goals}</td>

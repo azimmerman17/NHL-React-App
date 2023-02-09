@@ -2,15 +2,15 @@
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 
-const StandingsButton = ({ radioNme, setRadioNme }) => {
+const ToggleButtons = ({ radioNme, setRadioNme, radios }) => {
   
-    const radios = [
-      { nme: 'Divisional' },
-      { nme: 'Wild Card' },
-      { nme: 'Conference' },
-      {nme: 'League'},
-      // { nme: 'Playoffs' },
-    ];
+    // const radios = [
+    //   { nme: 'Divisional' },
+    //   { nme: 'Wild Card' },
+    //   { nme: 'Conference' },
+    //   {nme: 'League'},
+    //   // { nme: 'Playoffs' },
+    // ];
   
     return (
       <>
@@ -39,4 +39,4 @@ const StandingsButton = ({ radioNme, setRadioNme }) => {
   )
 }
 
-export default StandingsButton
+export default ToggleButtons

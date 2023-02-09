@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Stack from 'react-bootstrap/Stack';
 
 import RemoveDuplicates from '../RemoveDuplicates';
-import StandingsButton from "./StandingsButtons"
+import ToggleButtons from "../ToggleButtons"
 import StandingsDivisional from './StandingsDivisional';
 import StandingsWildCard from './StandingsWildCards';
 import StandingsConference from './StandingConference';
@@ -18,6 +18,14 @@ const Standings = ({ data, setPath, setTitle }) => {
   useEffect(() => {
     setTitle(`${radioNme} Standings`)
   },[radioNme])
+
+  const radios = [
+    { nme: 'Divisional' },
+    { nme: 'Wild Card' },
+    { nme: 'Conference' },
+    {nme: 'League'},
+    // { nme: 'Playoffs' },
+  ];
   
   try {
     records.forEach(record => {
@@ -81,7 +89,7 @@ const Standings = ({ data, setPath, setTitle }) => {
     <Stack gap={3} >
       <Stack className='bg-white text-center p-2 shadow rounded' gap={3} >
         <h2 >{`${radioNme} Standings`}</h2>
-        <StandingsButton radioNme={radioNme} setRadioNme={setRadioNme} /> 
+        <ToggleButtons radioNme={radioNme} setRadioNme={setRadioNme} radios={radios} /> 
       </Stack>
       {standings}
     </Stack>

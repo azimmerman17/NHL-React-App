@@ -1,6 +1,6 @@
 import Stack from "react-bootstrap/Stack"
 
-import styleColor from "../styleColor"
+import styleColor from "../functions/styleColor"
 
 const GamesPenaltyCard = ({ period } ) => {
   const cards = period.map(penalty => {

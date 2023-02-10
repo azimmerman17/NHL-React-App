@@ -1,7 +1,7 @@
 import Stack from "react-bootstrap/Stack"
 import { BsStarFill } from 'react-icons/bs' 
 
-import styleColor from "../styleColor"
+import styleColor from "../functions/styleColor"
 
 const GamesStarsofGame = ({ decisions, teams }) => {
   const { firstStar, secondStar, thirdStar } = decisions

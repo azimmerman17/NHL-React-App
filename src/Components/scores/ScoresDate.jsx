@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button"
 import { SlArrowRight, SlArrowLeft } from 'react-icons/sl'
 import { useEffect } from "react"
 
-import findDate from "../findDate"
+import findDate from "../functions/findDate"
 
 const ScoresDate = ({ date, setTitle }) => {
   

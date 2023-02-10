@@ -1,6 +1,6 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import getTime from '../getTime';
+import getTime from '../functions/getTime';
 
 const ScoresTime = ({ gameDate, broadcasts, abstractGameState, linescore }) => {
   const  { currentPeriodOrdinal, currentPeriodTimeRemaining, currentPeriod } =linescore

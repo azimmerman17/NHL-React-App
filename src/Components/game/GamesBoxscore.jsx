@@ -1,6 +1,6 @@
 import Table from "react-bootstrap/Table"
 
-import styleColor from "../styleColor"
+import styleColor from "../functions/styleColor"
 
 const GamesBoxscore = ({ teams, periods, hasShootout }) => {
   const { home, away } = teams

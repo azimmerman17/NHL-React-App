@@ -1,7 +1,7 @@
 import Stack from "react-bootstrap/Stack"
 
 import GamesGoalCard from "./GamesGoalCard"
-import GetEventArrey from "../GetEventArray"
+import GetEventArrey from "../functions/GetEventArray"
 
 
 const GamesScoring = ({ plays, currentPeriod }) => {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Stack from 'react-bootstrap/Stack';
 
-import RemoveDuplicates from '../RemoveDuplicates';
+import RemoveDuplicates from '../functions/RemoveDuplicates';
 import ToggleButtons from "../ToggleButtons"
 import StandingsDivisional from './StandingsDivisional';
 import StandingsWildCard from './StandingsWildCards';

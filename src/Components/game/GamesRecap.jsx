@@ -1,7 +1,6 @@
-import { useParams } from "react-router-dom"
 
 const GamesRecap = () => {
-  const { gameId } = useParams()
+
   return (
     <div>
       Recap

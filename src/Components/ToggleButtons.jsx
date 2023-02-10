@@ -1,17 +1,8 @@
-
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 
 const ToggleButtons = ({ radioNme, setRadioNme, radios }) => {
-  
-    // const radios = [
-    //   { nme: 'Divisional' },
-    //   { nme: 'Wild Card' },
-    //   { nme: 'Conference' },
-    //   {nme: 'League'},
-    //   // { nme: 'Playoffs' },
-    // ];
-  
+
     return (
       <>
         <ButtonGroup className='bg-white'>

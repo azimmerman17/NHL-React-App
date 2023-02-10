@@ -1,7 +1,7 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import styleColor from '../styleColor';
+import styleColor from '../functions/styleColor';
 
 const ScoresTeams = ({ teams, abstractGameState }) => {
   const { home, away } = teams

@@ -9,7 +9,7 @@ import GamesScoring from "./GamesScoring"
 import GamesPenalties from "./GamesPenalties"
 import GamesStarsofGame from "./GamesStarsofGame"
 import ToggleButtons from "../ToggleButtons"
-import styleColor from "../styleColor"
+import styleColor from "../functions/styleColor"
 import GamesRecap from "./GamesRecap"
 import GamesStats from "./GamesStats"
 import GamesPlays from "./GamesPlays"
@@ -20,7 +20,7 @@ const GamesFinal = ({ liveData }) => {
   const { periods, hasShootout, currentPeriod } = linescore
   const { away, home } = teams
 
-  const [radioNme, setRadioNme] = useState('Recap')
+  const [radioNme, setRadioNme] = useState('Plays')
 
   const radios = [
     { nme: 'Recap' },
@@ -40,7 +40,7 @@ const GamesFinal = ({ liveData }) => {
       case 'Stats':
         return <GamesStats />
       case 'Plays':
-        return <GamesPlays />
+        return <GamesPlays plays={plays} />
       default:
         return <p>MISSING CONTENT</p>
     }
@@ -51,15 +51,15 @@ const GamesFinal = ({ liveData }) => {
     <Container>
       <Row>
         <Col md={9}>
-          <Stack className='bg-white text-center p-2 shadow rounded' gap={2} >
-            <h3 >
+          <Stack gap={1} >
+            <h3 className='bg-white text-center p-2 shadow rounded'>
               <span style={{color: styleColor(teamHeader(away))}}>{teamHeader(away)}</span>
               <span> @ </span>
               <span style={{color: styleColor(teamHeader(home))}}>{teamHeader(home)}</span> 
             </h3>
-            <ToggleButtons radioNme={radioNme} setRadioNme={setRadioNme} radios={radios} /> 
+            <ToggleButtons className='bg-white text-center p-2 shadow rounded' radioNme={radioNme} setRadioNme={setRadioNme} radios={radios} /> 
+            {content()}
           </Stack>
-          {content()}
         </Col>
         <Col md={3}>
           <Stack gap={2}>

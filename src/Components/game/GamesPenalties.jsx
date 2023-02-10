@@ -1,5 +1,5 @@
 import Stack from "react-bootstrap/Stack"
-import GetEventArrey from "../GetEventArray"
+import GetEventArrey from "../functions/GetEventArray"
 
 import GamesPenaltyCard from "./GamesPenaltyCard"
 

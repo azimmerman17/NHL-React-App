@@ -27,7 +27,7 @@ const GamesGoalCard = ({ period }) => {
     return (
       <div key={eventCode} className=' bg-white p-1 shadow rounded d-flex flex-row'>
           <div style={{width: '60px'}}>
-            <img className='rounded-circle border' src={`https://cms.nhl.bamgrid.com/images/headshots/current/60x60/${playerId}.jpg`} alt='' /> 
+            <img className='rounded-circle' style={{border: `1px solid ${styleColor(name)}`}} src={`https://cms.nhl.bamgrid.com/images/headshots/current/60x60/${playerId}.jpg`} alt='' /> 
           </div>
           <div className='mx-2 my-0'>
             <h6 className='my-1' style={{color: styleColor(name)}}>{scorer}</h6>

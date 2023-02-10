@@ -1,50 +1,55 @@
-import { GiWhistle } from 'react-icons/gi'
+import Container from "react-bootstrap/Container"
+import Col from "react-bootstrap/Col"
+import Row from "react-bootstrap/Row"
+
+import styleColor from "../functions/styleColor"
 
 const GamesPlayCard = ({ playData }) => {
-  const { about, result } = playData
-  const { ordinalNum } = about
+  const { about, players, result, team } = playData
+  const { periodTime } = about
   const { description, event } = result
+  const { name, triCode } = team
 
-  switch (event) {
-    case 'Faceoff':
-      // console.log(playData)
-      return <h6>{event}</h6>  //keep
-    case 'Shot':
-      return <h6>{event}</h6> //keep
-    case 'Takeaway':
-      return <h6>{event}</h6> // keep
-    case 'Missed Shot':
-      return <h6>{event}</h6> // keep
-    case 'Goal':
-      return <h6>{event}</h6> // keep
-    case 'Hit':
-      return <h6>{event}</h6> // keep
-    case 'Giveaway':
-      return <h6>{event}</h6> // keep
-    case 'Blocked Shot':
-      return <h6>{event}</h6> // keep
-    case 'Penalty':
-      return <h6>{event}</h6> // keep
-    case 'Stoppage':
-      console.log(playData)
-      return <h6 className='p-2 shadow rounded fw-bold' style={{backgroundColor: '#ececec'}}> <GiWhistle /> {description}</h6>
-    case 'Period Start':
-      return <h6 className='p-2 shadow rounded fw-bold' style={{backgroundColor: '#ececec'}}>{ordinalNum} {description}</h6>  
-    case 'Period End':
-      return <h6 className='p-2 shadow rounded fw-bold' style={{backgroundColor: '#ececec'}}>{description}</h6>
-    case 'Game End':
-      return <h6 className='p-2 shadow rounded fw-bold' style={{backgroundColor: '#ececec'}}>{description}</h6>
-    case 'Game Official':
-      return <h6 className='p-2 shadow rounded fw-bold' style={{backgroundColor: '#ececec'}}>{description}</h6>
-    case 'Period Official':
-      return null
-    case 'Game Scheduled':
-      return null  
-    case 'Period Ready':
-      return null 
-    default: 
-      return <h6>{event} missing</h6>
-  }
+  const playerCol = players.map(playerInfo => {
+    const { player, playerType } = playerInfo
+    const { id, fullName } = player
+
+    return (
+      <div key={id} className='d-inline-flex flex-wrap m-1 p-1'>
+        <div className='p-0'>
+          <img className='rounded-circle border align-center shadow' src={`https://cms.nhl.bamgrid.com/images/headshots/current/60x60/${id}.jpg`} alt='' />
+          <p style={{fontSize: '10px'}} className='text-center'>{fullName}</p>
+        </div>
+      </div>
+    )
+
+  })
+
+  return (
+    <Container className='p-2 shadow rounded bg-white'  >
+      <Row className='d-flex align-items-center'>
+        <Col md={1} className='d-inline'>
+          <h6>{periodTime}</h6>
+        </Col>
+        <Col md={2} className='d-inline align-middle'>
+          <h6 style={{fontSize: '14px', backgroundColor: styleColor(name)}} className='py-1 shadow rounded text-white text-center'>{event}</h6>
+        </Col>
+        <Col md={5} className='align-middle'>
+        <h6 style={{color: styleColor(name)}}>{name}</h6>
+        <p style={{fontSize: '14px'}}>{description}</p>
+        </Col>
+        <Col md={3} className='align-middle'>
+          {playerCol}
+        </Col>
+      </Row>
+    </Container>
+  )
 }
-                                
+
 export default GamesPlayCard
+
+//time
+//description
+//players
+// team
+// event

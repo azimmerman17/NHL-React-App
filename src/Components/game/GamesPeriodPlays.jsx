@@ -1,5 +1,5 @@
 import Stack from "react-bootstrap/Stack"
-import GamesPlayCard from "./GamesPlayCard"
+import GamesPlayEvents from "./GamesPlayEvents"
 
 const GamesPeriodPlays = ({ allPlays, playsByPeriod, radioNme }) => {
   let index
@@ -33,12 +33,12 @@ const GamesPeriodPlays = ({ allPlays, playsByPeriod, radioNme }) => {
 
 
     return (
-        <GamesPlayCard key={eventCode} playData={playData} />
+        <GamesPlayEvents key={eventCode} playData={playData} />
     )
   })
 
   return (
-    <Stack gap={1} className='bg-white text-center shadow rounded'>
+    <Stack gap={1} className='bg-white shadow rounded'>
       {playlist}
     </Stack>
   )

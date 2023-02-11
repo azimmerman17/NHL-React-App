@@ -29,20 +29,20 @@ const Games = ({ data, setPath, setTitle }) => {
       return triCode
     }
     setTitle(`Game - ${code(away)} @ ${code(home)}`)
-  //   if (data === {}) {
-  //     setPath(link)
-  //   }
+    if (data === {}) {
+      setPath(link)
+    }
     
   },[data])
 
-  // try {
-  //   const { teams } = data.gameData 
-  // } catch (error){
-  //   console.log(error)
-  //   setPath(link)
-  // }
+  try {
+    const { teams } = data.gameData 
+  } catch (error){
+    console.log(error)
+    setPath(link)
+  }
 
-      console.log(data)
+  console.log(data)
   
   const render = () => {
     if (data.gameData) {

@@ -1,5 +1,4 @@
 const GamesTableRowData = ({ player, stat }) => {
-  console.log(player)
   const {  jerseyNumber, person, stats, position } = player
   const { type } = position
   const  { skaterStats, goalieStats } = stats

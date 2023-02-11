@@ -15,12 +15,13 @@ import GamesStats from "./GamesStats"
 import GamesPlays from "./GamesPlays"
 
 const GamesFinal = ({ liveData }) => {
+  // console.log(liveData)
   const { boxscore, linescore, plays, decisions } = liveData
   const { teams } = boxscore
   const { periods, hasShootout, currentPeriod } = linescore
   const { away, home } = teams
 
-  const [radioNme, setRadioNme] = useState('Plays')
+  const [radioNme, setRadioNme] = useState('Stats')
 
   const radios = [
     { nme: 'Recap' },
@@ -33,12 +34,19 @@ const GamesFinal = ({ liveData }) => {
     return name
   }
 
+  const teamScore = (team) => {
+    const { teamStats } = team
+    const {  teamSkaterStats } = teamStats
+    const { goals } = teamSkaterStats
+    return goals
+  }
+
   const content = () => {
     switch (radioNme) {
       case 'Recap':
         return <GamesRecap />
       case 'Stats':
-        return <GamesStats />
+        return <GamesStats boxscore={boxscore}/>
       case 'Plays':
         return <GamesPlays plays={plays} />
       default:
@@ -51,12 +59,23 @@ const GamesFinal = ({ liveData }) => {
     <Container>
       <Row>
         <Col md={9}>
-          <Stack gap={1} >
-            <h3 className='bg-white text-center p-2 shadow rounded'>
-              <span style={{color: styleColor(teamHeader(away))}}>{teamHeader(away)}</span>
-              <span> @ </span>
-              <span style={{color: styleColor(teamHeader(home))}}>{teamHeader(home)}</span> 
-            </h3>
+          <Stack gap={2} >
+            <Container className='bg-white p-2 shadow rounded m-a'>
+              <Row>
+                <Col md={4}>
+                  <h3 className='text-left' style={{color: styleColor(teamHeader(away))}}>{teamHeader(away)}</h3>
+                </Col>
+                <Col>
+                <h3 className='text-left' style={{color: styleColor(teamHeader(away))}}>{teamScore(away)}</h3>
+                </Col>
+                <Col>
+                  <h3 className='text-right' style={{color: styleColor(teamHeader(home))}}>{teamScore(home)}</h3> 
+                </Col>
+                <Col  className='text-end' md={4}>
+                  <h3 className='text-right' style={{color: styleColor(teamHeader(home))}}>{teamHeader(home)}</h3> 
+                </Col>
+              </Row>
+            </Container>
             <ToggleButtons className='bg-white text-center p-2 shadow rounded' radioNme={radioNme} setRadioNme={setRadioNme} radios={radios} /> 
             {content()}
           </Stack>

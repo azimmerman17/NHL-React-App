@@ -1,12 +1,17 @@
-const GamesStats = () => {
+import Stack from "react-bootstrap/Stack"
+import GamesPlayerStats from "./GamePlayerStats"
+import GamesTeamsStats from "./GamesTeamStats"
+
+const GamesStats = ({ boxscore }) => {
+  const { teams } = boxscore
+  // console.log(boxscore)
   return (
-    <div>
-      <h3>Teams stats</h3>
-      <h3>SoG by Period</h3>
-      <p>player stats</p>
+    <Stack gap={2}>
+      <GamesTeamsStats teams={teams}/>
+      <GamesPlayerStats teams={teams} />
       <p>additional info</p>
       <p>coaches, officals, scraches</p>
-    </div>
+    </Stack>
   )
 }
 

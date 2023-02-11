@@ -16,33 +16,26 @@ import { GamesDataFinal } from "../../Models/GamesFinal"
 const Games = ({ data, setPath, setTitle }) => {
   let { gameId } = useParams()
   const link = `/api/v1/game/${gameId}/feed/live`
-  data = GamesDataFinal
+  // data = GamesDataLive
 
   //  // API CONNECTION
   useEffect(() => {
-    const { gameData } = data
-    const { teams } = gameData
-    const { home, away } = teams
+    try {
+      const { gameData } = data
+      const { teams } = gameData
+      const { home, away } = teams
 
-    const code = (team) => {
-      const { triCode } = team 
-      return triCode
-    }
-    setTitle(`Game - ${code(away)} @ ${code(home)}`)
-    if (data === {}) {
+      const code = (team) => {
+        const { triCode } = team 
+        return triCode
+      }
+
+      setTitle(`Game - ${code(away)} @ ${code(home)}`)
+    } catch (error){
+      console.log(error)
       setPath(link)
     }
-    
   },[data])
-
-  try {
-    const { teams } = data.gameData 
-  } catch (error){
-    console.log(error)
-    setPath(link)
-  }
-
-  console.log(data)
   
   const render = () => {
     if (data.gameData) {

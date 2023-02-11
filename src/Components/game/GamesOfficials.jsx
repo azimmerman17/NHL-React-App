@@ -1,7 +1,6 @@
 import Stack from "react-bootstrap/Stack"
 
 const GamesOfficials = ({ officials }) => {
-  console.log(officials)
   let referees = []
   let linesmen = []
 
@@ -14,7 +13,6 @@ const GamesOfficials = ({ officials }) => {
       linesmen.push(fullName)
 
     }
-    console.log(referees)
   })
 
   return (

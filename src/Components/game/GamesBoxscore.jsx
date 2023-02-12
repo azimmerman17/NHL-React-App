@@ -2,7 +2,7 @@ import Table from "react-bootstrap/Table"
 
 import styleColor from "../functions/styleColor"
 
-const GamesBoxscore = ({ teams, periods, hasShootout }) => {
+const GamesBoxscore = ({ teams, periods, hasShootout, lastPlay }) => {
   const { home, away } = teams
 
   const headings = () => {
@@ -11,10 +11,21 @@ const GamesBoxscore = ({ teams, periods, hasShootout }) => {
       return <th key={ordinalNum}>{ordinalNum}</th>
     })
 
+    const gameTime = () => {
+      const { about, result } = lastPlay
+      const { description } = result
+      const { ordinalNum, periodTimeRemaining } = about 
+      if (description === 'Game Official') {
+        return <th className='text-center'>Final</th>
+      } else {
+        return <th className='text-center'>{ordinalNum} / {periodTimeRemaining}</th>
+      }
+    }
+
     return (
     <thead>
       <tr>
-        <th>Time</th>
+        {gameTime()}
         {per}
         {hasShootout ? <th>SO</th> : null}
         <th>T</th>

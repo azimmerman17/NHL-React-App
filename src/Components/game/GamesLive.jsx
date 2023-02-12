@@ -1,34 +1,37 @@
-import { useState } from "react"
 import Stack from "react-bootstrap/Stack"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
+import { useState } from "react"
 
 import GamesBoxscore from "./GamesBoxscore"
 import GamesScoring from "./GamesScoring"
 import GamesPenalties from "./GamesPenalties"
-import GamesStarsofGame from "./GamesStarsofGame"
-import ToggleButtons from "../ToggleButtons"
 import styleColor from "../functions/styleColor"
-import GamesRecap from "./GamesRecap"
+import GamesPlayCard from "./GamesPlayCard"
+import ToggleButtons from "../ToggleButtons"
 import GamesStats from "./GamesStats"
 import GamesPlays from "./GamesPlays"
+import GamesOnIce from "./GamesOnIce"
 
-const GamesFinal = ({ liveData }) => {
-  const { boxscore, linescore, plays, decisions } = liveData
+
+const GamesLive = ({ data }) => {
+  const { gameData, liveData } = data
+  const { boxscore, linescore, plays } = liveData
   const { teams } = boxscore
   const { periods, hasShootout, currentPeriod } = linescore
   const { away, home } = teams
   const { allPlays } = plays
 
   let lastPlay = allPlays[allPlays.length - 1]
+  console.log(liveData)
 
-  const [radioNme, setRadioNme] = useState('Recap')
+  const [radioNme, setRadioNme] = useState('Game')
 
   const radios = [
-    { nme: 'Recap' },
+    { nme: 'Game' },
     { nme: 'Stats' },
-    { nme: 'Plays' },
+    // { nme: 'Plays' },
   ];
 
   const teamHeader = (team) => {
@@ -47,26 +50,54 @@ const GamesFinal = ({ liveData }) => {
     const { goals } = teamSkaterStats
     return goals
   }
+  
+  const gameTime = () => {
+    const { about } = lastPlay
+    const { ordinalNum, periodTimeRemaining } = about 
+    return (
+      <div>
+        <h6 className='text-center'>{ordinalNum}</h6>
+        <h6 className='text-center'>{periodTimeRemaining}</h6>
+      </div>
+    )
+  }
 
   const content = () => {
     switch (radioNme) {
-      case 'Recap':
-        return <GamesRecap />
+      case 'Game':
+        return (
+          <Stack gap={2}>
+            <GamesOnIce />
+            <div className='bg-white p-2 shadow rounded'>
+              <h5>Last Play</h5>
+              <GamesPlayCard playData={lastPlay} /> 
+            </div>
+            <div className='bg-white p-2 shadow rounded'>
+              <h5>All Plays</h5>
+              <GamesPlays plays={plays} />
+            </div>
+          </Stack>
+        )
       case 'Stats':
         return <GamesStats boxscore={boxscore}/>
-      case 'Plays':
-        return <GamesPlays plays={plays} />
       default:
         return <p>MISSING CONTENT</p>
     }
   }
 
   return (
-    <Stack gap={3} className='mt-3'>
+    <Stack gap={3}>
       <Container>
         <Row>
-          <Col md={9}>
-            <Stack gap={2} >
+          <Col md={3}>
+          <Stack gap={2}>
+              <GamesBoxscore teams={teams} periods={periods} hasShootout={hasShootout} lastPlay={lastPlay}/>
+              <GamesScoring plays={plays} currentPeriod={currentPeriod}/>
+              <GamesPenalties plays={plays} currentPeriod={currentPeriod} />
+            </Stack>
+          </Col>
+          <Col>
+            <Stack gap={2}>
               <Container className='bg-white p-2 shadow rounded m-a'>
                 <Row>
                   <Col md={4}>
@@ -76,7 +107,7 @@ const GamesFinal = ({ liveData }) => {
                     <h3 className='text-left' style={{color: styleColor(teamId(away))}}>{teamScore(away)}</h3>
                   </Col>
                   <Col>
-                    <h6 className='text-center'>Final</h6>
+                    {gameTime()}
                   </Col>
                   <Col>
                     <h3 className='text-right' style={{color: styleColor(teamId(home))}}>{teamScore(home)}</h3> 
@@ -86,16 +117,9 @@ const GamesFinal = ({ liveData }) => {
                   </Col>
                 </Row>
               </Container>
-              <ToggleButtons className='bg-white text-center p-2 shadow rounded' radioNme={radioNme} setRadioNme={setRadioNme} radios={radios} /> 
+              <ToggleButtons className='bg-white text-center p-2 shadow rounded' radioNme={radioNme} setRadioNme={setRadioNme} radios={radios} />
               {content()}
-            </Stack>
-          </Col>
-          <Col md={3}>
-            <Stack gap={2}>
-              <GamesBoxscore teams={teams} periods={periods} hasShootout={hasShootout} lastPlay={lastPlay}/>
-              <GamesScoring plays={plays} currentPeriod={currentPeriod}/>
-              <GamesPenalties plays={plays} currentPeriod={currentPeriod} />
-              <GamesStarsofGame decisions={decisions} teams={teams}/>
+
             </Stack>
           </Col>
         </Row>
@@ -104,4 +128,4 @@ const GamesFinal = ({ liveData }) => {
   )
 }
 
-export default GamesFinal
+export default GamesLive

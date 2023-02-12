@@ -9,8 +9,10 @@ const GetEventArrey = (allPlays, eventPlays) => {
   eventPlays.forEach(eventPlay => {
     const event = allPlays[eventPlay]
     const { about } = event
-    const { period } = about
-    periods[period - 1].push(event)
+    const { period, ordinalNum } = about
+    if (ordinalNum !== 'SO') {
+      periods[period - 1].push(event)
+    }
   });
 
   return periods

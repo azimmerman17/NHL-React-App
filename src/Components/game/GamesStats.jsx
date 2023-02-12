@@ -1,6 +1,6 @@
 import Stack from "react-bootstrap/Stack"
 
-import GamesPlayerStats from "./GamePlayerStats"
+import GamesPlayerStats from "./GamesPlayerStats"
 import GamesOfficials from "./GamesOfficials"
 import GamesTeamsStats from "./GamesTeamStats"
 

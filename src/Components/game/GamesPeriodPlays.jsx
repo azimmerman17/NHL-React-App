@@ -3,7 +3,11 @@ import GamesPlayEvents from "./GamesPlayEvents"
 
 const GamesPeriodPlays = ({ allPlays, playsByPeriod, radioNme }) => {
   let index
-  
+  let finalPlay = allPlays[allPlays.length - 1]
+  const { result } = finalPlay
+  const { description } = result
+
+
   switch (radioNme) {
     case '1st':
       index = 0
@@ -25,6 +29,11 @@ const GamesPeriodPlays = ({ allPlays, playsByPeriod, radioNme }) => {
       break
   }
   const { plays } = playsByPeriod[index]
+  if (description !== 'Game Official' ) {
+    plays.reverse()
+  }
+
+
 
   const playlist = plays.map(play => {
     const playData = allPlays[play]

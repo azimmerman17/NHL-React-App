@@ -1,22 +1,18 @@
 import { useEffect } from "react"  
 import { useParams } from "react-router-dom"
-import Stack from "react-bootstrap/Stack"
-import Container from "react-bootstrap/Container"
-import Row from "react-bootstrap/Row"
-import Col from "react-bootstrap/Col"
 
 import GamesPreview from "./GamesPreview"
 import GamesFinal from "./GamesFinal"
 
 import { GamesDataPreview } from "../../Models/GamesPreview"
 import { GamesDataLive } from "../../Models/GamesLive"
-import { GamesDataFinal } from "../../Models/GamesFinal"
+import GamesLive from "./GamesLive"
 
 
 const Games = ({ data, setPath, setTitle }) => {
   let { gameId } = useParams()
   const link = `/api/v1/game/${gameId}/feed/live`
-  // data = GamesDataLive
+
 
   //  // API CONNECTION
   useEffect(() => {
@@ -46,31 +42,29 @@ const Games = ({ data, setPath, setTitle }) => {
 
       switch (abstractGameState) {
         case 'Preview':
+          data = GamesDataPreview
           return (
-            <GamesPreview />
+            <GamesPreview data={data}/>
           )
-          case 'Final':
-            return (
-              <GamesFinal liveData={liveData} />
-            )
-            default:
-            return (
-              <Stack gap={3} className='mt-3'>
-                <Container>
-                  <Row>
-                    <Col md={3}>
-                      <h2>TEAMS</h2>
-                    </Col>
-                    <Col>
-                      <h2>GAME</h2>
-                    </Col>
-                    <Col md={3}>
-                      <h2>PLAYERS</h2>
-                    </Col>
-                  </Row>
-                </Container>
-              </Stack>
-            )
+        case 'Live':
+          data = GamesDataLive 
+          return (
+            <GamesLive data={data} />
+          )
+        case 'Final':
+          // data = GamesDataLive 
+          // return (
+          //   <GamesLive data={data} />
+          // )
+          return (
+            <GamesFinal liveData={liveData} />
+          )
+        default:
+          return (
+            <div>
+              NOT BUILT
+            </div>
+          )
 
       }
   

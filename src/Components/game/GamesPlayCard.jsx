@@ -47,9 +47,3 @@ const GamesPlayCard = ({ playData }) => {
 }
 
 export default GamesPlayCard
-
-//time
-//description
-//players
-// team
-// event

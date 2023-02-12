@@ -53,7 +53,7 @@ const GamesTableRowData = ({ player, stat }) => {
     case 'TOTAL':
       return <td key={`${id}-${stat}`}>{`${goalieStats.saves} - ${goalieStats.shots}`}</td>
     case 'SV%':
-      return <td key={`${id}-${stat}`}>{goalieStats.savePercentage}</td>
+      return <td key={`${id}-${stat}`}>{goalieStats.shots > 0 ? `${goalieStats.savePercentage.toFixed(2)}%` : '-'}</td>
     default:
       return <td key={`${id}-${stat}`}>missing</td>
     }

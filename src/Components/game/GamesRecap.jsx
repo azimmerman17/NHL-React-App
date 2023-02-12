@@ -21,7 +21,7 @@ const GamesRecap = () => {
     if (link.length > 0) {
       fetchData()
     }
-  }, [])
+  }, [gameId])
 
   const render = () => {
     if (contentData.editorial) {

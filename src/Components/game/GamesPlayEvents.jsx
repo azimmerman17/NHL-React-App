@@ -8,7 +8,6 @@ const GamesPlayEvents = ({ playData }) => {
 
   switch (event) {
     case 'Faceoff':
-      console.log(playData)
       return <GamesPlayCard playData={playData} />
     case 'Shot':
       return <GamesPlayCard playData={playData} />

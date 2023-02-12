@@ -21,7 +21,7 @@ const GamesFinal = ({ liveData }) => {
   const { periods, hasShootout, currentPeriod } = linescore
   const { away, home } = teams
 
-  const [radioNme, setRadioNme] = useState('Stats')
+  const [radioNme, setRadioNme] = useState('Recap')
 
   const radios = [
     { nme: 'Recap' },

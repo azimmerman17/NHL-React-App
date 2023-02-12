@@ -2,11 +2,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 
 
+import './App.css';
 import Home from './Components/Home';
 import Scores from './Components/scores/Scores';
 import Standings from './Components/standings/Standings';
 import Games from './Components/game/Games';
-import './App.css';
 import NavBar from './Components/NavBar';
 
 function App() {

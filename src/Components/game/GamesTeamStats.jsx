@@ -24,7 +24,7 @@ const GamesTeamsStats = ({ teams }) => {
   })
 
   const teamStats = (team) => {
-    const { triCode, name } = team.team
+    const { triCode, name, id } = team.team
     const { teamStats } = team
     const {  teamSkaterStats } = teamStats  
 
@@ -35,7 +35,7 @@ const GamesTeamsStats = ({ teams }) => {
     return (
       <Row className='my-2'>
         <Col>
-          <h4 style={{color: styleColor(name)}}>{triCode}</h4>
+          <h4 style={{color: styleColor(id)}}>{triCode}</h4>
         </Col>
         {statSwitch}
       </Row>

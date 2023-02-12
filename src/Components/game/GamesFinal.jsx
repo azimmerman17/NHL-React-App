@@ -15,7 +15,6 @@ import GamesStats from "./GamesStats"
 import GamesPlays from "./GamesPlays"
 
 const GamesFinal = ({ liveData }) => {
-  // console.log(liveData)
   const { boxscore, linescore, plays, decisions } = liveData
   const { teams } = boxscore
   const { periods, hasShootout, currentPeriod } = linescore
@@ -30,8 +29,8 @@ const GamesFinal = ({ liveData }) => {
   ];
 
   const teamHeader = (team) => {
-    const { name } = team.team
-    return name
+    const { id } = team.team
+    return id
   }
 
   const teamScore = (team) => {

@@ -22,7 +22,6 @@ const GamesRecap = () => {
       fetchData()
     }
   }, [])
-  // console.log(contentData)
 
   const render = () => {
     if (contentData.editorial) {
@@ -30,18 +29,15 @@ const GamesRecap = () => {
       const { recap } = editorial
       const { items } = recap
       const { epg } = media
-      console.log(highlights)
+
       return (
         <Stack gap={2}>
           <GamesRecapArticle recap={items[0]} epg={epg}/>
           <GamesRecapHighlights highlights={highlights} />
-
         </Stack>
       )
     }
   }
-
-
 
   return (
     <div>

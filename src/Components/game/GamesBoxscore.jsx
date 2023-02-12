@@ -27,7 +27,7 @@ const GamesBoxscore = ({ teams, periods, hasShootout }) => {
     const  { teamStats } = team
     const { teamSkaterStats } = teamStats
     const { goals } = teamSkaterStats
-    const { triCode, name } = team.team
+    const { triCode, id } = team.team
 
     const scores = periods.map((period) => {
       const { home, away, ordinalNum } = period
@@ -36,7 +36,7 @@ const GamesBoxscore = ({ teams, periods, hasShootout }) => {
 
     return (
       <tr>
-        <th style={{color: styleColor(name)}}>{triCode}</th>
+        <th style={{color: styleColor(id)}}>{triCode}</th>
         {scores}
         {hasShootout ? <th>Not Built</th> : null}
         <td>{goals}</td>

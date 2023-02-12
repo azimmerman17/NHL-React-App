@@ -16,11 +16,11 @@ const GamesPlayerStats = ({ teams }) => {
 
   const TeamBoxscore = (team) => {
     const { coaches, scratches, players } = team
-    const { name } = team.team
+    const { id, name } = team.team
 
     const posTable = positions.map((position, i) => {
       return (
-        position === 'Goalie' ? <GamesGoalieTable key={`${position}-${name}-${i}`} positionName={position} team={team} /> : <GamesSkaterTable key={`${position}-${name}`} positionName={position} team={team} />
+        position === 'Goalie' ? <GamesGoalieTable key={`${position}-${name}-${i}`} positionName={position} team={team} /> : <GamesSkaterTable key={`${position}-${name}-${i}`} positionName={position} team={team} />
       )
     }) 
 
@@ -63,7 +63,7 @@ const GamesPlayerStats = ({ teams }) => {
 
     return (
       <Stack className='bg-white p-2 shadow rounded' gap={1}>
-        <h4 style={{color: styleColor(name)}}>{name}</h4>
+        <h4 style={{color: styleColor(id)}}>{name}</h4>
         {posTable}
         {scratched()}
         {headCoach}

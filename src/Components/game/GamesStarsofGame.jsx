@@ -29,9 +29,9 @@ const GamesStarsofGame = ({ decisions, teams }) => {
       playerTeam = team
     }
     const { position, stats } = player
-    const { name, triCode } = playerTeam
+    const { triCode, } = playerTeam
 
-    const statline = (pos, stats) => {
+    const statline = (stats) => {
       if (position.name === 'Goalie') {
         const { goalieStats } = stats
         const { savePercentage, saves } = goalieStats
@@ -50,10 +50,10 @@ const GamesStarsofGame = ({ decisions, teams }) => {
           <img className='rounded-circle border' src={`https://cms.nhl.bamgrid.com/images/headshots/current/60x60/${id}.jpg`} alt=''/> 
         </div>
         <div className='mx-2 my-0'>
-          <h6 className='my-1' style={{color: styleColor(name)}}>{fullName}</h6>
-          <p className='my-1' style={{fontSize: '12px'}}>{statline(position.name, stats)}</p> 
+          <h6 className='my-1' style={{color: styleColor(playerTeam.id)}}>{fullName}</h6>
+          <p className='my-1' style={{fontSize: '12px'}}>{statline(stats)}</p> 
           <p className='my-1' style={{fontSize: '12px'}}>
-            <span style={{color: styleColor(name)}}>{triCode} </span>
+            <span style={{color: styleColor(playerTeam.id)}}>{triCode} </span>
             <span>| {position.name}</span>
           </p>
         </div>

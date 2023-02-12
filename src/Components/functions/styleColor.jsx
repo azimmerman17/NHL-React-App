@@ -1,73 +1,105 @@
 const styleColor = (team) => {
   switch (team) {
-    case 'Anaheim Ducks': 
-      return '#ff6600'  // alt #111111
-    case 'Arizona Coyotes':
-      return '#98002e'
-    case 'Boston Bruins':
+// Anaheim Ducks
+    case 24:
+      return '#ff6600'
+// Arizona Coyotes
+    case 53:
+      return '#98002E'
+// Boston Bruins
+    case 6: 
       return '#111111'
-    case 'Buffalo Sabres':
-      return '#002654' 
-    case 'Calgary Flames':
-      return '#ce1126' 
-    case 'Carolina Hurricanes':
-      return '#cc0000' 
-    case 'Chicago Blackhawks':
-      return '#ce1126' 
-    case 'Colorado Avalanche': 
-      return '#75263d' 
-    case 'Columbus Blue Jackets': 
-      return '#003366' 
-    case 'Dallas Stars':  
-      return '#006847' 
-    case 'Detroit Red Wings': 
-      return '#ce1126' 
-    case 'Edmonton Oilers':
-      return '#00205b'  // alt #ff4b00
-    case 'Florida Panthers': 
-      return '#cf102d' 
-    case 'Los Angeles Kings':  
-      return '#111111' 
-    case 'Minnesota Wild':
-      return '#af1e2d' //alt #164734
-    case 'Montréal Canadiens':
-      return '#a71930'  
-    case 'Nashville Predators':
-      return '#ffb819' // alt #011e41
-    case 'New Jersey Devils': 
-      return '#cc0100' 
-    case 'New York Islanders':
-      return '#00468b' 
-    case 'New York Rangers':
-      return '#0038a8' 
-    case 'Ottawa Senators': 
-      return '#191919' 
-    case 'Philadelphia Flyers':
-      return '#f74902' 
-    case 'Pittsburgh Penguins':
-      return '#000000' 
-    case 'St. Louis Blues':
+// Buffalo Sabres
+    case 7: 
+      return '#002654'
+// Calgary Flames
+    case 20:
+      return '#CE1126' 
+// Carolina Hurricanes
+    case 12:
+      return '#CC0000'
+// Chicago Blackhawks
+    case 16:
+      return '#CE1126'
+// Colorado Avalanche
+    case 21:
+      return '#75263D'
+// Columbus Blue Jackets
+    case 29:
+      return '#003366'
+// Dallas Stars
+    case 25:
+      return '#006847'
+// Detroit Red Wings
+    case 17:
+      return '#CE1126'
+// Edmonton Oilers
+    case 22:
+      return '#00205B'  // alt #ff4b00
+// Florida Panthers
+    case 13:
+      return '#CF102D'
+// Los Angeles Kings
+    case 26:
+      return '#111111'
+// Minnesota Wild
+    case 30:
+      return '#AF1E2D'
+// Montréal Canadiens
+    case 8: 
+      return '#A71930'
+// Nashville Predators
+    case 18:
+      return '#FFB819'
+// New Jersey Devils
+    case 1: 
+      return '#cc0000;' 
+// New York Islanders
+    case 2: 
+      return '#00468B'
+// New York Rangers
+    case 3: 
+      return '#0038A8'
+// Ottawa Senators
+    case 9: 
+      return '#191919'
+// Philadelphia Flyers
+    case 4: 
+      return '#F74902'
+// Pittsburgh Penguins
+    case 5: 
+      return '#000000'
+// St. Louis Blues
+    case 19:
       return '#003087'
-    case 'San Jose Sharks': 
-      return '#00788a' 
-    case 'Seattle Kraken':
-      return '#96d8d8'   // alt #001425
-    case 'Tampa Bay Lightning':
-      return '#00205b' 
-    case 'Toronto Maple Leafs':
-      return '#002868' 
-    case 'Vancouver Canucks': 
-      return '#003d7d' 
-    case 'Vegas Golden Knights':
-      return '#111111'  // alt #85714d
-    case 'Washington Capitals':
-      return '#041e42' 
-    case 'Winnipeg Jets':
+// San Jose Sharks
+    case 28:
+      return '#00788A'
+// Seattle Kraken
+    case 55:
+      return '#001425'   // alt  #96d8d8    
+// Tampa Bay Lightning
+    case 14:
+      return '#00205B'
+// Toronto Maple Leafs
+    case 10:
+      return '#002868'
+// Vancouver Canucks
+    case 23:
+      return '#003D7D'
+// Vegas Golden Knights
+    case 54:
+      return '#111111'
+// Washington Capitals
+    case 15:
+      return '#041E42'
+// Winnipeg Jets
+    case 52:
       return '#002654' 
     case 'pp':
       return 'red'
     default:
-      return '#000'
+      return '#pink'
   }
 }
 

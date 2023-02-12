@@ -8,7 +8,7 @@ const GamesPlayCard = ({ playData }) => {
   const { about, players, result, team } = playData
   const { periodTime } = about
   const { description, event } = result
-  const { name, triCode } = team
+  const { name, triCode, id } = team
 
   const playerCol = players.map(playerInfo => {
     const { player, playerType } = playerInfo
@@ -32,10 +32,10 @@ const GamesPlayCard = ({ playData }) => {
           <h6>{periodTime}</h6>
         </Col>
         <Col md={2} className='d-inline align-middle'>
-          <h6 style={{fontSize: '14px', backgroundColor: styleColor(name)}} className='py-1 shadow rounded text-white text-center'>{event}</h6>
+          <h6 style={{fontSize: '14px', backgroundColor: styleColor(id)}} className='py-1 shadow rounded text-white text-center'>{event}</h6>
         </Col>
         <Col md={5} className='align-middle'>
-        <h6 style={{color: styleColor(name)}}>{name}</h6>
+        <h6 style={{color: styleColor(id)}}>{name}</h6>
         <p style={{fontSize: '14px'}}>{description}</p>
         </Col>
         <Col md={3} className='align-middle'>

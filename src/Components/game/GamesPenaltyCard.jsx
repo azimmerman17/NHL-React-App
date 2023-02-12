@@ -7,7 +7,7 @@ const GamesPenaltyCard = ({ period } ) => {
     const { about, players, result, team } = penalty
     const { periodTime  } = about
     const { eventCode, penaltyMinutes, penaltySeverity, secondaryType } = result
-    const { name, triCode } = team
+    const { name, triCode, id } = team
     let penalizied 
     let drewBy
     let servedBy
@@ -30,13 +30,13 @@ const GamesPenaltyCard = ({ period } ) => {
     return (
       <div key={eventCode} className='bg-white p-1 shadow rounded d-flex flex-row'>
           <div style={{width: '60px'}}>
-            <img className='rounded-circle' style={{border: `1px solid ${styleColor(name)}`}} src={`https://cms.nhl.bamgrid.com/images/headshots/current/60x60/${playerId}.jpg`} alt='' /> 
+            <img className='rounded-circle' style={{border: `1px solid ${styleColor(id)}`}} src={`https://cms.nhl.bamgrid.com/images/headshots/current/60x60/${playerId}.jpg`} alt='' /> 
           </div>
           <div className='mx-2 my-0'>
-            <h6 className='my-1' style={{color: styleColor(name)}}>{penalizied}</h6>
+            <h6 className='my-1' style={{color: styleColor(id)}}>{penalizied}</h6>
             <p className='my-1' style={{fontSize: '12px'}}>{penaltyMinutes} min {penaltySeverity} for {secondaryType}{drewBy ? ` against ${drewBy}` : null}{servedBy ? ` served by ${servedBy}` : null}.</p>
             <p className='my-1' style={{fontSize: '12px'}}>
-              <span style={{color: styleColor(name)}}>{triCode} </span>
+              <span style={{color: styleColor(id)}}>{triCode} </span>
               <span>| {periodTime}</span>
             </p>
           </div>

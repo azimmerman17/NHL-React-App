@@ -24,7 +24,6 @@ const GamesLive = ({ data }) => {
   const { allPlays } = plays
 
   let lastPlay = allPlays[allPlays.length - 1]
-  console.log(liveData)
 
   const [radioNme, setRadioNme] = useState('Game')
 
@@ -67,7 +66,7 @@ const GamesLive = ({ data }) => {
       case 'Game':
         return (
           <Stack gap={2}>
-            <GamesOnIce />
+            <GamesOnIce boxscore={boxscore} linescore={linescore} />
             <div className='bg-white p-2 shadow rounded'>
               <h5>Last Play</h5>
               <GamesPlayCard playData={lastPlay} /> 

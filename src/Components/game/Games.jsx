@@ -52,13 +52,13 @@ const Games = ({ data, setPath, setTitle }) => {
             <GamesLive data={data} />
           )
         case 'Final':
-          // data = GamesDataLive 
-          // return (
-          //   <GamesLive data={data} />
-          // )
+          data = GamesDataLive 
           return (
-            <GamesFinal liveData={liveData} />
+            <GamesLive data={data} />
           )
+          // return (
+          //   <GamesFinal liveData={liveData} />
+          // )
         default:
           return (
             <div>

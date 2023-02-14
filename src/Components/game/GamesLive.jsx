@@ -14,6 +14,7 @@ import ToggleButtons from "../ToggleButtons"
 import GamesStats from "./GamesStats"
 import GamesPlays from "./GamesPlays"
 import GamesOnIce from "./GamesOnIce"
+import GamesLiveHighlights from "./GamesLiveHighlights"
 
 
 const GamesLive = ({ data }) => {
@@ -26,12 +27,19 @@ const GamesLive = ({ data }) => {
 
   let lastPlay = allPlays[allPlays.length - 1]
 
-  const [radioNme, setRadioNme] = useState('Game')
+  const [radioLeftNme, setRadioLeftNme] = useState('Highlights')
+  const [radioRightNme, setRadioRightNme] = useState('Game')
 
-  const radios = [
+
+
+  const radiosRight = [
     { nme: 'Game' },
     { nme: 'Stats' },
-    // { nme: 'Plays' },
+  ];
+
+  const radiosLeft = [
+    { nme: 'Boxscore' },
+    { nme: 'Highlights' },
   ];
 
   const teamHeader = (team) => {
@@ -62,7 +70,7 @@ const GamesLive = ({ data }) => {
     )
   }
 
-  const content = () => {
+  const content = (radioNme) => {
     switch (radioNme) {
       case 'Game':
         return (
@@ -80,6 +88,16 @@ const GamesLive = ({ data }) => {
         )
       case 'Stats':
         return <GamesStats boxscore={boxscore}/>
+      case 'Boxscore':
+        return (
+          <Stack gap={2}>
+            <GamesBoxscore teams={teams} periods={periods} hasShootout={hasShootout} lastPlay={lastPlay}/>
+            <GamesScoring plays={plays} currentPeriod={currentPeriod}/>
+            <GamesPenalties plays={plays} currentPeriod={currentPeriod} />
+          </Stack>
+        )
+      case 'Highlights':
+          return <GamesLiveHighlights />
       default:
         return <p>MISSING CONTENT</p>
     }
@@ -87,38 +105,39 @@ const GamesLive = ({ data }) => {
 
   return (
     <Stack gap={3}>
+      <Container className='bg-white p-2 shadow rounded m-a'>
+        <Row>
+          <Col md={4}>
+            <h3 className='text-left' style={{color: styleColor(teamId(away))}}>{teamHeader(away)}</h3>
+          </Col>
+          <Col>
+            <h3 className='text-left' style={{color: styleColor(teamId(away))}}>{teamScore(away)}</h3>
+          </Col>
+          <Col>
+            {gameTime()}
+          </Col>
+          <Col>
+            <h3 className='text-right' style={{color: styleColor(teamId(home))}}>{teamScore(home)}</h3> 
+          </Col>
+          <Col  className='text-end' md={4}>
+            <h3 className='text-right' style={{color: styleColor(teamId(home))}}>{teamHeader(home)}</h3> 
+          </Col>
+        </Row>
+      </Container>
       <Container>
         <Row>
           <Col md={3}>
           <Stack gap={2}>
-              <GamesBoxscore teams={teams} periods={periods} hasShootout={hasShootout} lastPlay={lastPlay}/>
-              <GamesScoring plays={plays} currentPeriod={currentPeriod}/>
-              <GamesPenalties plays={plays} currentPeriod={currentPeriod} />
-            </Stack>
+            <ToggleButtons className='bg-white text-center p-2 shadow rounded' radioNme={radioLeftNme} setRadioNme={setRadioLeftNme} radios={radiosLeft} />
+            {content(radioLeftNme)}
+          </Stack>
+
           </Col>
           <Col>
             <Stack gap={2}>
-              <Container className='bg-white p-2 shadow rounded m-a'>
-                <Row>
-                  <Col md={4}>
-                    <h3 className='text-left' style={{color: styleColor(teamId(away))}}>{teamHeader(away)}</h3>
-                  </Col>
-                  <Col>
-                    <h3 className='text-left' style={{color: styleColor(teamId(away))}}>{teamScore(away)}</h3>
-                  </Col>
-                  <Col>
-                    {gameTime()}
-                  </Col>
-                  <Col>
-                    <h3 className='text-right' style={{color: styleColor(teamId(home))}}>{teamScore(home)}</h3> 
-                  </Col>
-                  <Col  className='text-end' md={4}>
-                    <h3 className='text-right' style={{color: styleColor(teamId(home))}}>{teamHeader(home)}</h3> 
-                  </Col>
-                </Row>
-              </Container>
-              <ToggleButtons className='bg-white text-center p-2 shadow rounded' radioNme={radioNme} setRadioNme={setRadioNme} radios={radios} />
-              {content()}
+              
+              <ToggleButtons className='bg-white text-center p-2 shadow rounded' radioNme={radioRightNme} setRadioNme={setRadioRightNme} radios={radiosRight} />
+              {content(radioRightNme)}
 
             </Stack>
           </Col>

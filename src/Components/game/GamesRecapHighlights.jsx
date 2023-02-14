@@ -1,4 +1,3 @@
-import Carousel from 'react-bootstrap/Carousel';
 import Stack from "react-bootstrap/Stack"
 
 import GamesHighlightCard from './GamesHIghlightCard';
@@ -14,7 +13,6 @@ const GamesRecapHighlights = ({ highlights }) => {
       <div key={id} className='m-2'>
         <GamesHighlightCard item={item} />
       </div>
-
     )
   })
 

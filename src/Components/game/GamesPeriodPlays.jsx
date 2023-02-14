@@ -29,9 +29,9 @@ const GamesPeriodPlays = ({ allPlays, playsByPeriod, radioNme }) => {
       break
   }
   const { plays } = playsByPeriod[index]
-  if (description !== 'Game Official' ) {
-    plays.reverse()
-  }
+  // if (description !== 'Game Official' ) {
+  //   plays.reverse()
+  // }
 
   const playlist = plays.map(play => {
     const playData = allPlays[play]

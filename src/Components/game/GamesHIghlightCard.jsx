@@ -1,5 +1,6 @@
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button';
+
 import styleColor from '../functions/styleColor';
 
 const GamesHighlightCard = ({ item }) => {

@@ -3,18 +3,19 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 
-const GamesPreview = () => {
+const GamesPreview = ({ data }) => {
+  console.log(data)
   return (
     <Stack gap={3} className='mt-3'>
     <Container>
       <Row>
-        <Col md={2}>
+        <Col md={3}>
           <h2>TEAMS</h2>
         </Col>
-        <Col md={8}>
+        <Col md={6}>
           <h2>GAME</h2>
         </Col>
-        <Col md={2}>
+        <Col md={3}>
           <h2>PLAYERS</h2>
         </Col>
       </Row>

@@ -43,7 +43,7 @@ const GamesGoalCard = ({ period }) => {
   })
   return (
     <Stack gap={1}>
-      {period.length === 0 ? <p><small>No Goals</small></p> : cards}
+      {period.length === 0 ? <p className='bg-white p-2 shadow rounded'><small>No Goals</small></p> : cards}
     </Stack>
   )
 }

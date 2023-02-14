@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom"
 
 import GamesPreview from "./GamesPreview"
 import GamesFinal from "./GamesFinal"
+import GamesLive from "./GamesLive"
 
 import { GamesDataPreview } from "../../Models/GamesPreview"
 import { GamesDataLive } from "../../Models/GamesLive"
-import GamesLive from "./GamesLive"
 
 
 const Games = ({ data, setPath, setTitle }) => {
@@ -47,18 +47,18 @@ const Games = ({ data, setPath, setTitle }) => {
             <GamesPreview data={data}/>
           )
         case 'Live':
-          data = GamesDataLive 
+          // data = GamesDataLive 
           return (
             <GamesLive data={data} />
           )
         case 'Final':
-          data = GamesDataLive 
-          return (
-            <GamesLive data={data} />
-          )
+          // data = GamesDataLive 
           // return (
-          //   <GamesFinal liveData={liveData} />
+          //   <GamesLive data={data} />
           // )
+          return (
+            <GamesFinal liveData={liveData} />
+          )
         default:
           return (
             <div>

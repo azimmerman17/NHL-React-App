@@ -5,16 +5,16 @@ import Col from "react-bootstrap/Col"
 import GamesSkatersOnIce from "./GamesSkatersOnIce"
 import GamesGoaliesOnIce from "./GamesGoaliesOnIce"
 import GamesPenaltyBox from "./GamesPenaltyBox"
+import GamesSituation from "./GamesSituation"
 
 const GamesOnIce = ({ boxscore , linescore }) => {
   const { teams } = boxscore
   const { powerPlayInfo, powerPlayStrength } = linescore
-  const { inSituation, situationTimeElapsed, situationTimeRemaining } = powerPlayInfo
   const { away, home } = teams
 
   return (
-    <Stack gap={2} className='bg-white p-2 shadow rounded'>
-      {powerPlayStrength !== 'Even' ? <h6 className='bg-danger text-center text-white p-2 shadow rounded'>{powerPlayStrength}</h6> : null}
+    <Stack gap={2} className='bg-white p-1 shadow rounded'>
+      <GamesSituation powerPlayInfo={powerPlayInfo} powerPlayStrength={powerPlayStrength} />
       <Row>
         <Col>
           <GamesSkatersOnIce team={away} />
@@ -39,7 +39,6 @@ const GamesOnIce = ({ boxscore , linescore }) => {
           <GamesPenaltyBox team={home} />
         </Col>
       </Row>
-    <p>Penalty Box</p>
     </Stack>
   )
 }

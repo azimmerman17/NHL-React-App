@@ -8,10 +8,10 @@ const GamesPlayCard = ({ playData }) => {
   const { about, players, result, team } = playData
   const { periodTime } = about
   const { description, event } = result
-  const { name, triCode, id } = team
+  const { name, id } = team
 
   const playerCol = players.map(playerInfo => {
-    const { player, playerType } = playerInfo
+    const { player } = playerInfo
     const { id, fullName } = player
 
     return (

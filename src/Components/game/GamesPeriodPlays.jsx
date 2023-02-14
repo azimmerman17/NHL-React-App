@@ -33,13 +33,10 @@ const GamesPeriodPlays = ({ allPlays, playsByPeriod, radioNme }) => {
     plays.reverse()
   }
 
-
-
   const playlist = plays.map(play => {
     const playData = allPlays[play]
     const { result } = playData
     const { eventCode } = result
-
 
     return (
         <GamesPlayEvents key={eventCode} playData={playData} />

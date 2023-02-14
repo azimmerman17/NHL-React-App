@@ -10,21 +10,19 @@ const GamesSkatersOnIce = ({ team }) => {
   const { name, id } = team.team
 
   let headings = [
-    '#',
-    ' ',
-    '',
+    'Skaters',
     'G',
     'A',
-    'P',
-    'PIM',
+    '+/-',
+    'S',
     'TOI'
   ]
   
   const header = headings.map((heading, i) => {
-    if (heading === '') {
-     return  <Col key={i} md={4} className='text-center'>{heading}</Col>
+    if (heading === 'Skaters') {
+     return  <Col key={i} md={6} className='text-white' style={{fontSize: '12px'}}>{heading}</Col>
     }  else {
-      return <Col key={i} md={1}>{heading}</Col>
+      return <Col key={i} md={1} className='text-center text-white' style={{fontSize: '12px'}}>{heading}</Col>
     }
   })
 
@@ -42,17 +40,16 @@ const GamesSkatersOnIce = ({ team }) => {
     const { id, fullName } = person 
     if (abbreviation !== 'G') {
       const { skaterStats } = stats
-      const { goals, assists, timeOnIce, penaltyMinutes } = skaterStats
+      const { goals, assists, timeOnIce, shots, plusMinus } = skaterStats
 
       return (
-        <Row key={`${id}-${jerseyNumber}`} className='d-flex flex-row p-2' style={{fontSize: '14px'}}>
+        <Row key={`${id}-${jerseyNumber}`} className='d-flex flex-row p-1 text-white' style={{fontSize: '14px'}}>
           <Col md={1} className='text-center'>{jerseyNumber}</Col>
-          <Col md={4}>{fullName}</Col>
-          <Col md={1} className='text-center'>{abbreviation}</Col>
+          <Col md={5}>{fullName} ({abbreviation})</Col>
           <Col md={1} className='text-center'>{goals}</Col>
           <Col md={1} className='text-center'>{assists}</Col>
-          <Col md={1} className='text-center'>{goals + assists}</Col>
-          <Col md={1} className='text-center'>{penaltyMinutes}</Col>
+          <Col md={1} className='text-center'>{plusMinus}</Col>
+          <Col md={1} className='text-center'>{shots}</Col>
           <Col md={1} className='text-center'>{timeOnIce}</Col>
         </Row>
       )
@@ -60,10 +57,10 @@ const GamesSkatersOnIce = ({ team }) => {
   })
 
   return (
-    <Stack gap={2} className='bg-white shadow rounded striped'>
-      <h4 style={{color: styleColor(id)}} className='text-center'>{name}</h4>
+    <Stack gap={2} className='shadow rounded' style={{backgroundColor: styleColor(id)}}>
+      <h4 className='text-white text-center mt-3'>{name}</h4>
       <Container>
-        <Row className='d-flex flex-row p-2 text-center'>
+        <Row className='d-flex flex-row p-1 text-center'>
           {header}
         </Row>
         {skaterOnIce}

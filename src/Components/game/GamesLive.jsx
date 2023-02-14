@@ -9,6 +9,7 @@ import GamesScoring from "./GamesScoring"
 import GamesPenalties from "./GamesPenalties"
 import styleColor from "../functions/styleColor"
 import GamesPlayCard from "./GamesPlayCard"
+import GamesPlayEvents from "./GamesPlayEvents"
 import ToggleButtons from "../ToggleButtons"
 import GamesStats from "./GamesStats"
 import GamesPlays from "./GamesPlays"
@@ -69,7 +70,7 @@ const GamesLive = ({ data }) => {
             <GamesOnIce boxscore={boxscore} linescore={linescore} />
             <div className='bg-white p-2 shadow rounded'>
               <h5>Last Play</h5>
-              <GamesPlayCard playData={lastPlay} /> 
+              <GamesPlayEvents playData={lastPlay} /> 
             </div>
             <div className='bg-white p-2 shadow rounded'>
               <h5>All Plays</h5>

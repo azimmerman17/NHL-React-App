@@ -16,12 +16,13 @@ const GamesSkatersOnIce = ({ team }) => {
     'G',
     'A',
     'P',
+    'PIM',
     'TOI'
   ]
   
   const header = headings.map((heading, i) => {
     if (heading === '') {
-     return  <Col key={i} md={5} className='text-center'>{heading}</Col>
+     return  <Col key={i} md={4} className='text-center'>{heading}</Col>
     }  else {
       return <Col key={i} md={1}>{heading}</Col>
     }
@@ -34,26 +35,27 @@ const GamesSkatersOnIce = ({ team }) => {
     for (const objKey in players)  {
       if (key === objKey) {
         player = players[key]
-        const { jerseyNumber, position, stats, person } = player
-        const { abbreviation } = position
-        const { id, fullName } = person 
-        if (abbreviation !== 'G') {
-          const { skaterStats } = stats
-          const { goals, assists, timeOnIce } = skaterStats
-          
-          return (
-            <Row key={`${id}-${jerseyNumber}`} className='d-flex flex-row p-2' style={{fontSize: '14px'}}>
-              <Col md={1} className='text-center'>{jerseyNumber}</Col>
-              <Col md={5}>{fullName}</Col>
-              <Col md={1} className='text-center'>{abbreviation}</Col>
-              <Col md={1} className='text-center'>{goals}</Col>
-              <Col md={1} className='text-center'>{assists}</Col>
-              <Col md={1} className='text-center'>{goals + assists}</Col>
-              <Col md={1} className='text-center'>{timeOnIce}</Col>
-            </Row>
-          )
-        }
       }
+    }
+    const { jerseyNumber, position, stats, person } = player
+    const { abbreviation } = position
+    const { id, fullName } = person 
+    if (abbreviation !== 'G') {
+      const { skaterStats } = stats
+      const { goals, assists, timeOnIce, penaltyMinutes } = skaterStats
+
+      return (
+        <Row key={`${id}-${jerseyNumber}`} className='d-flex flex-row p-2' style={{fontSize: '14px'}}>
+          <Col md={1} className='text-center'>{jerseyNumber}</Col>
+          <Col md={4}>{fullName}</Col>
+          <Col md={1} className='text-center'>{abbreviation}</Col>
+          <Col md={1} className='text-center'>{goals}</Col>
+          <Col md={1} className='text-center'>{assists}</Col>
+          <Col md={1} className='text-center'>{goals + assists}</Col>
+          <Col md={1} className='text-center'>{penaltyMinutes}</Col>
+          <Col md={1} className='text-center'>{timeOnIce}</Col>
+        </Row>
+      )
     }
   })
 

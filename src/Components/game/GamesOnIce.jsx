@@ -1,8 +1,10 @@
 import Stack from "react-bootstrap/Stack"
-import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
+
 import GamesSkatersOnIce from "./GamesSkatersOnIce"
+import GamesGoaliesOnIce from "./GamesGoaliesOnIce"
+import GamesPenaltyBox from "./GamesPenaltyBox"
 
 const GamesOnIce = ({ boxscore , linescore }) => {
   const { teams } = boxscore
@@ -12,19 +14,31 @@ const GamesOnIce = ({ boxscore , linescore }) => {
 
   return (
     <Stack gap={2} className='bg-white p-2 shadow rounded'>
-      {powerPlayStrength == 'Even' ? <h6 className='bg-danger text-center text-white p-2 shadow rounded'>{powerPlayStrength}</h6> : null}
-      <Container>
-        <Row>
-          <Col>
-            <GamesSkatersOnIce team={away} />
-          </Col>
-          <Col>
-            <GamesSkatersOnIce team={home} />
-          </Col>
-        </Row>
-      </Container>
-    <p>Players on Ice</p>
-    <p>goalie stats #, name, saves, shots, sv%</p>
+      {powerPlayStrength !== 'Even' ? <h6 className='bg-danger text-center text-white p-2 shadow rounded'>{powerPlayStrength}</h6> : null}
+      <Row>
+        <Col>
+          <GamesSkatersOnIce team={away} />
+        </Col>
+        <Col>
+          <GamesSkatersOnIce team={home} />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <GamesGoaliesOnIce team={away} />
+        </Col>
+        <Col>
+          <GamesGoaliesOnIce team={home} />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <GamesPenaltyBox team={away} />
+        </Col>
+        <Col>
+          <GamesPenaltyBox team={home} />
+        </Col>
+      </Row>
     <p>Penalty Box</p>
     </Stack>
   )

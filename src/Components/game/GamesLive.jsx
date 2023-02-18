@@ -15,6 +15,7 @@ import GamesStats from "./GamesStats"
 import GamesPlays from "./GamesPlays"
 import GamesOnIce from "./GamesOnIce"
 import GamesLiveHighlights from "./GamesLiveHighlights"
+import GamesHeader from "./GamesHeader"
 
 
 const GamesLive = ({ data }) => {
@@ -105,25 +106,7 @@ const GamesLive = ({ data }) => {
 
   return (
     <Stack gap={3}>
-      <Container className='bg-white p-2 shadow rounded m-a'>
-        <Row>
-          <Col md={4}>
-            <h3 className='text-left' style={{color: styleColor(teamId(away))}}>{teamHeader(away)}</h3>
-          </Col>
-          <Col>
-            <h3 className='text-left' style={{color: styleColor(teamId(away))}}>{teamScore(away)}</h3>
-          </Col>
-          <Col>
-            {gameTime()}
-          </Col>
-          <Col>
-            <h3 className='text-right' style={{color: styleColor(teamId(home))}}>{teamScore(home)}</h3> 
-          </Col>
-          <Col  className='text-end' md={4}>
-            <h3 className='text-right' style={{color: styleColor(teamId(home))}}>{teamHeader(home)}</h3> 
-          </Col>
-        </Row>
-      </Container>
+      <GamesHeader linescore={linescore} abstractGameState={'Live'} />
       <Container>
         <Row>
           <Col md={3}>

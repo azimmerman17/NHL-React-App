@@ -13,6 +13,7 @@ import styleColor from "../functions/styleColor"
 import GamesRecap from "./GamesRecap"
 import GamesStats from "./GamesStats"
 import GamesPlays from "./GamesPlays"
+import GamesHeader from "./GamesHeader"
 
 const GamesFinal = ({ liveData }) => {
   const { boxscore, linescore, plays, decisions } = liveData
@@ -61,29 +62,11 @@ const GamesFinal = ({ liveData }) => {
 
   return (
     <Stack gap={3} className='mt-3'>
+      <GamesHeader linescore={linescore} abstractGameState={'Final'} />
       <Container>
         <Row>
           <Col md={9}>
             <Stack gap={2} >
-              <Container className='bg-white p-2 shadow rounded m-a'>
-                <Row>
-                  <Col md={4}>
-                    <h3 className='text-left' style={{color: styleColor(teamId(away))}}>{teamHeader(away)}</h3>
-                  </Col>
-                  <Col>
-                    <h3 className='text-left' style={{color: styleColor(teamId(away))}}>{teamScore(away)}</h3>
-                  </Col>
-                  <Col>
-                    <h6 className='text-center'>Final</h6>
-                  </Col>
-                  <Col>
-                    <h3 className='text-right' style={{color: styleColor(teamId(home))}}>{teamScore(home)}</h3> 
-                  </Col>
-                  <Col  className='text-end' md={4}>
-                    <h3 className='text-right' style={{color: styleColor(teamId(home))}}>{teamHeader(home)}</h3> 
-                  </Col>
-                </Row>
-              </Container>
               <ToggleButtons className='bg-white text-center p-2 shadow rounded' radioNme={radioNme} setRadioNme={setRadioNme} radios={radios} /> 
               {content()}
             </Stack>

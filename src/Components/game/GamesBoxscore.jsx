@@ -2,7 +2,9 @@ import Table from "react-bootstrap/Table"
 
 import styleColor from "../functions/styleColor"
 
-const GamesBoxscore = ({ teams, periods, hasShootout, lastPlay }) => {
+const GamesBoxscore = ({ boxscore, linescore, lastPlay }) => {
+  const { periods, hasShootout, shootoutInfo } = linescore
+  const  { teams } = boxscore
   const { home, away } = teams
 
   const headings = () => {
@@ -27,7 +29,7 @@ const GamesBoxscore = ({ teams, periods, hasShootout, lastPlay }) => {
       <tr>
         {gameTime()}
         {per}
-        {hasShootout ? <th>SO</th> : null}
+        {hasShootout ? <th>SO</th> : null} 
         <th>T</th>
       </tr>
     </thead>
@@ -35,22 +37,31 @@ const GamesBoxscore = ({ teams, periods, hasShootout, lastPlay }) => {
   }
 
   const body = (team, string) => {
-    const  { teamStats } = team
-    const { teamSkaterStats } = teamStats
-    const { goals } = teamSkaterStats
     const { triCode, id } = team.team
 
     const scores = periods.map((period) => {
       const { home, away, ordinalNum } = period
-      return <th key={`${string}-${ordinalNum}`}>{string === 'home' ? home.goals : away.goals}</th>
+      return <td key={`${string}-${ordinalNum}`}>{string === 'home' ? home.goals : away.goals}</td>
     })
+
+    const goals = () => {
+      const { teams } = linescore
+      const { away, home } = teams 
+      return string === 'home' ? home.goals : away.goals
+    }
+
+    const shootOut = () => {
+      const { away, home } = shootoutInfo
+      return string === 'home' ? `${home.scores} - ${home.attempts}` : `${away.scores} - ${away.attempts}`
+
+    }
 
     return (
       <tr>
         <th style={{color: styleColor(id)}}>{triCode}</th>
         {scores}
-        {hasShootout ? <th>Not Built</th> : null}
-        <td>{goals}</td>
+        {hasShootout ? <td><small>{shootOut()}</small></td> : null}
+        <td>{goals()}</td>
       </tr>
     )
   }

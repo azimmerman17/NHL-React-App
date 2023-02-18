@@ -16,8 +16,8 @@ import GamesPlays from "./GamesPlays"
 
 const GamesFinal = ({ liveData }) => {
   const { boxscore, linescore, plays, decisions } = liveData
-  const { teams } = boxscore
-  const { periods, hasShootout, currentPeriod } = linescore
+  // const { teams } = boxscore
+  const { teams, periods, hasShootout, currentPeriod } = linescore
   const { away, home } = teams
   const { allPlays } = plays
 
@@ -42,9 +42,7 @@ const GamesFinal = ({ liveData }) => {
   }
 
   const teamScore = (team) => {
-    const { teamStats } = team
-    const {  teamSkaterStats } = teamStats
-    const { goals } = teamSkaterStats
+    const { goals } = team
     return goals
   }
 
@@ -92,10 +90,10 @@ const GamesFinal = ({ liveData }) => {
           </Col>
           <Col md={3}>
             <Stack gap={2}>
-              <GamesBoxscore teams={teams} periods={periods} hasShootout={hasShootout} lastPlay={lastPlay}/>
+              <GamesBoxscore boxscore={boxscore} linescore={linescore} lastPlay={lastPlay}/>
               <GamesScoring plays={plays} currentPeriod={currentPeriod}/>
               <GamesPenalties plays={plays} currentPeriod={currentPeriod} />
-              <GamesStarsofGame decisions={decisions} teams={teams}/>
+              <GamesStarsofGame decisions={decisions} boxscore={boxscore}/>
             </Stack>
           </Col>
         </Row>

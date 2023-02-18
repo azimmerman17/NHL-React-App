@@ -3,8 +3,9 @@ import { BsStarFill } from 'react-icons/bs'
 
 import styleColor from "../functions/styleColor"
 
-const GamesStarsofGame = ({ decisions, teams }) => {
+const GamesStarsofGame = ({ decisions, boxscore }) => {
   const { firstStar, secondStar, thirdStar } = decisions
+  const { teams } = boxscore
   const { home, away } = teams
   
   const card = (star) => {

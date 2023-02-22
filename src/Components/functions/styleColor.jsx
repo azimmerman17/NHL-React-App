@@ -53,7 +53,7 @@ const styleColor = (team) => {
       return '#FFB819'
 // New Jersey Devils
     case 1: 
-      return '#cc0000;' 
+      return '#cc0000' 
 // New York Islanders
     case 2: 
       return '#00468B'

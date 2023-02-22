@@ -18,8 +18,7 @@ import GamesLiveHighlights from "./GamesLiveHighlights"
 import GamesHeader from "./GamesHeader"
 
 
-const GamesLive = ({ data }) => {
-  const { gameData, liveData } = data
+const GamesLive = ({ liveData }) => {
   const { boxscore, linescore, plays } = liveData
   const { teams } = boxscore
   const { periods, hasShootout, currentPeriod } = linescore
@@ -28,7 +27,7 @@ const GamesLive = ({ data }) => {
 
   let lastPlay = allPlays[allPlays.length - 1]
 
-  const [radioLeftNme, setRadioLeftNme] = useState('Highlights')
+  const [radioLeftNme, setRadioLeftNme] = useState('Boxscore')
   const [radioRightNme, setRadioRightNme] = useState('Game')
 
 
@@ -92,7 +91,7 @@ const GamesLive = ({ data }) => {
       case 'Boxscore':
         return (
           <Stack gap={2}>
-            <GamesBoxscore teams={teams} periods={periods} hasShootout={hasShootout} lastPlay={lastPlay}/>
+            <GamesBoxscore boxscore={boxscore} linescore={linescore} lastPlay={lastPlay}/>
             <GamesScoring plays={plays} currentPeriod={currentPeriod}/>
             <GamesPenalties plays={plays} currentPeriod={currentPeriod} />
           </Stack>

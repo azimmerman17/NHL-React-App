@@ -28,7 +28,7 @@ const GamesRecapArticle = ({ recap, epg }) => {
 
 
   return (
-    <Stack className='bg-white  p-2 shadow rounded' gap={1}>
+    <Stack className='bg-white p-2 shadow rounded' gap={1}>
       <h3 className='text-center'>{headline}</h3>
       <p className='text-secondary text-center'>{subhead}</p>
       {authors} 

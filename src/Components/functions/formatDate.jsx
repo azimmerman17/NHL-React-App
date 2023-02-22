@@ -1,6 +1,5 @@
 const formatDate = (date) => {
-  console.log(date)
-  return `${date.getUTCFullYear()}-${date.getUTCMonth()}-${date.getUTCDate()}`
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
 }
 
 export default formatDate

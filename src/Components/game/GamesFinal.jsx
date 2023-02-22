@@ -9,7 +9,6 @@ import GamesScoring from "./GamesScoring"
 import GamesPenalties from "./GamesPenalties"
 import GamesStarsofGame from "./GamesStarsofGame"
 import ToggleButtons from "../ToggleButtons"
-import styleColor from "../functions/styleColor"
 import GamesRecap from "./GamesRecap"
 import GamesStats from "./GamesStats"
 import GamesPlays from "./GamesPlays"
@@ -17,9 +16,7 @@ import GamesHeader from "./GamesHeader"
 
 const GamesFinal = ({ liveData }) => {
   const { boxscore, linescore, plays, decisions } = liveData
-  // const { teams } = boxscore
-  const { teams, periods, hasShootout, currentPeriod } = linescore
-  const { away, home } = teams
+  const { currentPeriod } = linescore
   const { allPlays } = plays
 
   let lastPlay = allPlays[allPlays.length - 1]
@@ -31,22 +28,7 @@ const GamesFinal = ({ liveData }) => {
     { nme: 'Stats' },
     { nme: 'Plays' },
   ];
-
-  const teamHeader = (team) => {
-    const { name } = team.team
-    return name
-  }
-
-  const teamId = (team) => {
-    const { id } = team.team
-    return id
-  }
-
-  const teamScore = (team) => {
-    const { goals } = team
-    return goals
-  }
-
+  
   const content = () => {
     switch (radioNme) {
       case 'Recap':

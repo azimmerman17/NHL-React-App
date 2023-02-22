@@ -3,6 +3,7 @@ import Table from "react-bootstrap/Table"
 import styleColor from "../functions/styleColor"
 
 const GamesBoxscore = ({ boxscore, linescore, lastPlay }) => {
+  console.log(linescore)
   const { periods, hasShootout, shootoutInfo } = linescore
   const  { teams } = boxscore
   const { home, away } = teams

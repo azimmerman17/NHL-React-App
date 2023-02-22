@@ -35,7 +35,7 @@ const GamesPenaltyBox = ({ team }) => {
     )
 
   })
-  console.log(team)
+
   return (
     <Stack gap={1} className='p-1 text-center shadow rounded text-white' style={{backgroundColor: styleColor(teamId), fontSize: '14px'}}>
       <h6>Penalty Box</h6>

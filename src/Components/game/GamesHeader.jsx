@@ -1,14 +1,15 @@
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
+import Stack from "react-bootstrap/Stack"
 
 import styleColor from "../functions/styleColor"
 import getTime from "../functions/getTime"
+import findDate from "../functions/findDate"
 
-const GamesHeader = ({ linescore, abstractGameState, datetime }) => {
+const GamesHeader = ({ linescore, abstractGameState, datetime, broadcasts }) => {
   const { teams , currentPeriod, currentPeriodOrdinal, currentPeriodTimeRemaining} = linescore
   const {  away, home } = teams
-
   const teamHeader = (team) => {
     const { name } = team.team
     return name
@@ -23,17 +24,36 @@ const GamesHeader = ({ linescore, abstractGameState, datetime }) => {
     const { goals } = team
     return abstractGameState === 'Preview' ? null : goals
   }
+  const media = () => {
+    if (broadcasts) {
+      let tv = ['ESPN+'] 
+      broadcasts.forEach((broadcast) => {
+        const { name, type, site } = broadcast
+          if (type === 'national'  && site !== 'nhlCA') {
+            tv =  [...tv, ` ${name}`]
+          }
+          if (name === 'TNT' || name === 'NHLN' || name === 'ESPN+') {
+            tv.shift()
+          }
+      })
+      return <small className='m-0'>{tv.toString()}</small>
+    }
+  }
 
   const gameTime = () => {
     switch (abstractGameState) {
       case 'Preview':
-        console.log(datetime)
         const  { dateTime } = datetime
-        return getTime(dateTime)
+        return (
+          <Stack gap={1}>
+            <p>{findDate(dateTime, 0)}</p>
+            <p>{getTime(dateTime)}</p>
+          </Stack>
+        )
       case 'Live':
         return `${currentPeriodOrdinal} ${currentPeriodTimeRemaining}`
       case 'Final':
-        return `Final ${ currentPeriod > 3 ? `- ${currentPeriodOrdinal}` : null}`
+        return `Final ${ currentPeriod > 3 ? `- ${currentPeriodOrdinal}` : ''}`
       default:
         return 'No Data'
     }
@@ -48,7 +68,7 @@ const GamesHeader = ({ linescore, abstractGameState, datetime }) => {
       <Col>
         <h3 className='text-left' style={{color: styleColor(teamId(away))}}>{teamScore(away)}</h3>
       </Col>
-      <Col>
+      <Col md={2}>
         <h6 className='text-center'>{gameTime()}</h6>
       </Col>
       <Col>

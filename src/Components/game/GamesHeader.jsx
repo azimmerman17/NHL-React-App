@@ -24,22 +24,7 @@ const GamesHeader = ({ linescore, abstractGameState, datetime, broadcasts }) => 
     const { goals } = team
     return abstractGameState === 'Preview' ? null : goals
   }
-  const media = () => {
-    if (broadcasts) {
-      let tv = ['ESPN+'] 
-      broadcasts.forEach((broadcast) => {
-        const { name, type, site } = broadcast
-          if (type === 'national'  && site !== 'nhlCA') {
-            tv =  [...tv, ` ${name}`]
-          }
-          if (name === 'TNT' || name === 'NHLN' || name === 'ESPN+') {
-            tv.shift()
-          }
-      })
-      return <small className='m-0'>{tv.toString()}</small>
-    }
-  }
-
+  
   const gameTime = () => {
     switch (abstractGameState) {
       case 'Preview':

@@ -99,7 +99,7 @@ const styleColor = (team) => {
     case 'pp':
       return 'red'
     default:
-      return '#pink'
+      return 'pink'
   }
 }
 

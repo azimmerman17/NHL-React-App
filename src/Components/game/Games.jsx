@@ -13,6 +13,7 @@ import { GamesDataLive } from "../../Models/GamesLive"
 const Games = ({ data, setPath, setTitle }) => {
   let { gameId } = useParams()
   let [scheduleData, setscheduleData] = useState({})
+  let [teamData, setTeamData] = useState({})
   const link = `/api/v1/game/${gameId}/feed/live`
 
   //  // API CONNECTION
@@ -28,21 +29,34 @@ const Games = ({ data, setPath, setTitle }) => {
         return triCode
       }
 
+      const teamId = (team) => {
+        const { id } = team 
+        return id
+      }
+
       const fetchData = async (link) => {
         const BASE_URL = 'https://statsapi.web.nhl.com'
         const url = BASE_URL + link
         const response = await fetch(url)     
         let data = await response.json()
+        if (schduleLink === link) {
         const { dates } = data
         const { games } = dates[0]
-        data = games.filter(game => game.gamePk === Number(gameId))
-        setscheduleData(data[0])
+          data = games.filter(game => game.gamePk === Number(gameId))
+          setscheduleData(data[0])
+        }
+        if (teamsLink === link) {
+        }
+
       }
       
       setTitle(`Game - ${code(away)} @ ${code(home)}`)
 
       const schduleLink = `/api/v1/schedule?startDate=${formatDate(new Date(dateTime))}&endDate=${formatDate(new Date(dateTime))}&hydrate=broadcasts(all),game(content(media(epg)),seriesSummary),radioBroadcasts,seriesSummary(series)`
       fetchData(schduleLink)
+
+      const teamsLink = `/api/v1/teams/?teamId=${teamId(home)},${teamId(away)}&expand=team.league,team.stats,team.roster,team.division,team.conference,team.franchise,team.leaders,team.schedule.next,team.schedule.previous,team.ticket,team.content.home.all,team.record,team.playoffs,team.name,team.social,team.devicePropertie,team.content.sections,roster.person`
+      fetchData(teamsLink)
 
       } catch (error){
       console.log(error)

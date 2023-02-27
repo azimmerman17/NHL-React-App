@@ -11,8 +11,9 @@ import StandingsLeague from './StandingsLeague';
 
 const Standings = ({ data, setPath, setTitle }) => {
   const { records } = data
-  const link ='api/v1/standings'
+  const link ='api/v1/standings?expand=standings.record'
   const [radioNme, setRadioNme] = useState('Divisional')
+  console.log(data)
   let conferences = []
 
   useEffect(() => {

@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col"
 import GamesHeader from "./GamesHeader"
 import GamesTeamsRecords from "./GamesTeamsRecords"
 import GamesPreviewArticle from "./GamesPreviewArticle"
+import GamesPrev from "./GamesPrev"
 
 const GamesPreview = ({ data , scheduleData }) => {
   const { gameData, liveData } = data
@@ -20,7 +21,8 @@ const GamesPreview = ({ data , scheduleData }) => {
     const { id } = team 
     return id
   }
-  console.log(data)
+  // console.log(data)
+  // console.log(scheduleData)
     
   return (
     <Stack gap={4} className='mt-3'>
@@ -28,15 +30,19 @@ const GamesPreview = ({ data , scheduleData }) => {
     <Container>
       <Row>
         <Col md={8}>
-        <h2>GAME</h2>
-          <h2>PLAYERS</h2>
+ 
           <Stack gap={3}>
             <GamesTeamsRecords teams={teams} />
             <GamesPreviewArticle />
+            <p>top players</p>
+            <p>goalies</p>
+            <p>team rosters</p>
           </Stack>
-\        </Col>
+        </Col>
         <Col md={4}>
-          <h2>TEAMS</h2>
+          <p>team stats</p>
+          <GamesPrev  gameData={gameData} />
+          <p>game location</p>
         </Col>
       </Row>
     </Container>

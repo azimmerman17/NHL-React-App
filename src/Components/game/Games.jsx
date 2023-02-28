@@ -46,16 +46,17 @@ const Games = ({ data, setPath, setTitle }) => {
           setscheduleData(data[0])
         }
         if (teamsLink === link) {
+          setTeamData(data)
         }
 
       }
       
       setTitle(`Game - ${code(away)} @ ${code(home)}`)
 
-      const schduleLink = `/api/v1/schedule?startDate=${formatDate(new Date(dateTime))}&endDate=${formatDate(new Date(dateTime))}&hydrate=broadcasts(all),game(content(media(epg)),seriesSummary),radioBroadcasts,seriesSummary(series)`
+      const schduleLink = `/api/v1/schedule?startDate=${formatDate(new Date(dateTime))}&endDate=${formatDate(new Date(dateTime))}&hydrate=broadcasts(all),game(content(media(epg)),seriesSummary),radioBroadcasts,seriesSummary(series)&expand=team.stats`
       fetchData(schduleLink)
 
-      const teamsLink = `/api/v1/teams/?teamId=${teamId(home)},${teamId(away)}&expand=team.league,team.stats,team.roster,team.division,team.conference,team.franchise,team.leaders,team.schedule.next,team.schedule.previous,team.ticket,team.content.home.all,team.record,team.playoffs,team.name,team.social,team.devicePropertie,team.content.sections,roster.person`
+      const teamsLink = `/api/v1/teams/?teamId=${teamId(home)},${teamId(away)}&expand=team.stats,team.roster,team.leaders,team.record,team.playoffs,team.name,roster.person`
       fetchData(teamsLink)
 
       } catch (error){
@@ -65,7 +66,7 @@ const Games = ({ data, setPath, setTitle }) => {
   },[data])
   
   const render = () => {
-    if (data.gameData && scheduleData.gamePk) {
+    if (data.gameData && scheduleData.gamePk && teamData.copyright) {
       const { gameData, liveData } = data
       const { status } = gameData
       const { abstractGameState } = status
@@ -73,7 +74,7 @@ const Games = ({ data, setPath, setTitle }) => {
       switch (abstractGameState) {
         case 'Preview':
           return (
-            <GamesPreview data={data} scheduleData={scheduleData} />
+            <GamesPreview data={data} scheduleData={scheduleData} teamData={teamData}/>
           )
         case 'Live':
           // data = GamesDataLive 

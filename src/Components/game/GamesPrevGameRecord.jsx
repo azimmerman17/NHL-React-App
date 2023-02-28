@@ -34,7 +34,7 @@ const result = () => {
 }
  
   return (
-    <Button href={`${gamePk}`} variant='outline-secondary' style={{width: '100%', margin: 'auto'}}> 
+    <Button href={`${gamePk}`} className='bg-white' variant='outline-secondary' style={{width: '100%', margin: 'auto'}}> 
           <h6 className="text-black">{homeId === teamId ? 'vs' : '@'} {homeId === teamId ? getTeamAbbr(away) : getTeamAbbr(home)}</h6>
           <Row>
             <Col>

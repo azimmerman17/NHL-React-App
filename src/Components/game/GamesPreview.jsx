@@ -9,8 +9,9 @@ import GamesHeader from "./GamesHeader"
 import GamesTeamsRecords from "./GamesTeamsRecords"
 import GamesPreviewArticle from "./GamesPreviewArticle"
 import GamesPrev from "./GamesPrev"
+import GamesTeamStatsPreview from "./GamesTeamStatsPreview"
 
-const GamesPreview = ({ data , scheduleData }) => {
+const GamesPreview = ({ data , scheduleData, teamData}) => {
   const { gameData, liveData } = data
   const {  broadcasts, teams } = scheduleData
   const { linescore } = liveData
@@ -21,16 +22,13 @@ const GamesPreview = ({ data , scheduleData }) => {
     const { id } = team 
     return id
   }
-  // console.log(data)
-  // console.log(scheduleData)
-    
+  
   return (
     <Stack gap={4} className='mt-3'>
       <GamesHeader linescore={linescore} abstractGameState={'Preview'} datetime={datetime} broadcasts={broadcasts}/>
     <Container>
       <Row>
         <Col md={8}>
- 
           <Stack gap={3}>
             <GamesTeamsRecords teams={teams} />
             <GamesPreviewArticle />
@@ -40,9 +38,11 @@ const GamesPreview = ({ data , scheduleData }) => {
           </Stack>
         </Col>
         <Col md={4}>
-          <p>team stats</p>
-          <GamesPrev  gameData={gameData} />
+        <Stack gap={3}>
+          <GamesTeamStatsPreview teamData={teamData} gameData={gameData} />
+          <GamesPrev  gameData={gameData} teamData={teamData}/>
           <p>game location</p>
+        </Stack>
         </Col>
       </Row>
     </Container>

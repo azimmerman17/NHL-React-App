@@ -1,4 +1,5 @@
 import Stack from "react-bootstrap/Stack"
+import styleColor from "../functions/styleColor"
 
 import GamesPrevGameRecord from "./GamesPrevGameRecord"
 
@@ -40,9 +41,13 @@ const GamesPrevGamesList = ({ prevGamesData, teamId, otherId, dateTime, setLink 
   }
 
   const render = teamPrevGames.map(game => {
-      const { gamePk } = game
+      const { gamePk, teams } = game
+      const { home, away } = teams
+
+      const oppId = home.team.id === teamId ? away.team.id : home.team.id
+
       return (
-       <div className='bg-white p-2 shadow rounded' style={{width: '95%', margin: 'auto'}} key={`${gamePk}-${teamId}`}>
+       <div className='p-2 shadow rounded' style={{width: '95%', margin: 'auto', backgroundColor: styleColor(oppId)}} key={`${gamePk}-${teamId}`} >
           <GamesPrevGameRecord game={game} teamId={teamId} />
         </div>
       )

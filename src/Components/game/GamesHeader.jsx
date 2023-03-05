@@ -45,21 +45,21 @@ const GamesHeader = ({ linescore, abstractGameState, datetime, broadcasts }) => 
   }
 
   return (
-    <Container className='bg-white p-2 shadow rounded m-a'>
+    <Container className='bg-white p-2 shadow rounded'>
     <Row>
-      <Col md={4}>
+      <Col className='my-auto' md={4}>
         <h3 className='text-left' style={{color: styleColor(teamId(away))}}>{teamHeader(away)}</h3>
       </Col>
-      <Col>
+      <Col className='my-auto'>
         <h3 className='text-left' style={{color: styleColor(teamId(away))}}>{teamScore(away)}</h3>
       </Col>
-      <Col md={2}>
+      <Col className='my-auto' md={2}>
         <h6 className='text-center'>{gameTime()}</h6>
       </Col>
-      <Col>
+      <Col className='my-auto'>
         <h3 className='text-right' style={{color: styleColor(teamId(home))}}>{teamScore(home)}</h3> 
       </Col>
-      <Col  className='text-end' md={4}>
+      <Col  className='my-auto' md={4}>
         <h3 className='text-right' style={{color: styleColor(teamId(home))}}>{teamHeader(home)}</h3> 
       </Col>
     </Row>

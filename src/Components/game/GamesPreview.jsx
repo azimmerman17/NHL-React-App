@@ -72,7 +72,6 @@ const GamesPreview = ({ data , scheduleData, teamData, homeTeam, awayTeam, setHo
     return (
       <Stack gap={3} className='mt-3'>
       <GamesHeader linescore={linescore} abstractGameState={'Preview'} datetime={datetime} broadcasts={broadcasts}/>
-    <Container>
       <Row>
         <Col md={8}>
           <Stack gap={2}>
@@ -89,7 +88,6 @@ const GamesPreview = ({ data , scheduleData, teamData, homeTeam, awayTeam, setHo
         </Stack>
         </Col>
       </Row>
-    </Container>
   </Stack>
   )
 }

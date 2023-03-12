@@ -17,7 +17,7 @@ const GamesScoring = ({ plays, currentPeriod }) => {
   const goals = periods.map((period, i) => {
     if (i < currentPeriod) {
       return (
-        <div key={i}>
+        <div key={i} className='shadow rounded p-1'>
           <h6><small>{i < 4 ? `${periodNames[i]} Period` : 'Overtime'}</small></h6>
           <GamesGoalCard period={period} />
         </div>

@@ -106,7 +106,6 @@ const GamesLive = ({ liveData }) => {
   return (
     <Stack gap={3}>
       <GamesHeader linescore={linescore} abstractGameState={'Live'} />
-      <Container>
         <Row>
           <Col md={3}>
           <Stack gap={2}>
@@ -124,7 +123,6 @@ const GamesLive = ({ liveData }) => {
             </Stack>
           </Col>
         </Row>
-      </Container>
     </Stack>
   )
 }

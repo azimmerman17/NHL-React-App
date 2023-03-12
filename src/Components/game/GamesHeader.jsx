@@ -45,25 +45,23 @@ const GamesHeader = ({ linescore, abstractGameState, datetime, broadcasts }) => 
   }
 
   return (
-    <Container className='bg-white p-2 shadow rounded'>
-    <Row>
-      <Col className='my-auto' md={4}>
-        <h3 className='text-left' style={{color: styleColor(teamId(away))}}>{teamHeader(away)}</h3>
-      </Col>
-      <Col className='my-auto'>
-        <h3 className='text-left' style={{color: styleColor(teamId(away))}}>{teamScore(away)}</h3>
-      </Col>
-      <Col className='my-auto' md={2}>
-        <h6 className='text-center'>{gameTime()}</h6>
-      </Col>
-      <Col className='my-auto'>
-        <h3 className='text-right' style={{color: styleColor(teamId(home))}}>{teamScore(home)}</h3> 
-      </Col>
-      <Col  className='my-auto' md={4}>
-        <h3 className='text-right' style={{color: styleColor(teamId(home))}}>{teamHeader(home)}</h3> 
-      </Col>
-    </Row>
-  </Container>
+  <Row className='bg-white p-2 shadow rounded'>
+    <Col className='my-auto' md={4}>
+      <h3 className='text-left' style={{color: styleColor(teamId(away))}}>{teamHeader(away)}</h3>
+    </Col>
+    <Col className='my-auto'>
+      <h3 className='text-left' style={{color: styleColor(teamId(away))}}>{teamScore(away)}</h3>
+    </Col>
+    <Col className='my-auto' md={2}>
+      <h6 className='text-center'>{gameTime()}</h6>
+    </Col>
+    <Col className='my-auto'>
+      <h3 className='text-right' style={{color: styleColor(teamId(home))}}>{teamScore(home)}</h3> 
+    </Col>
+    <Col  className='my-auto' md={4}>
+      <h3 className='text-right' style={{color: styleColor(teamId(home))}}>{teamHeader(home)}</h3> 
+    </Col>
+  </Row>
   )
 }
 

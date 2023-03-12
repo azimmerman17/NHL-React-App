@@ -16,7 +16,7 @@ const GamesPenalties = ({ plays, currentPeriod }) => {
   const penalties = periods.map((period, i) => {
     if (i < currentPeriod) {
       return (
-        <div key={i}>
+        <div key={i} className='shadow rounded p-1'>
           <h6><small>{i < 4 ? `${periodNames[i]} Period` : 'Overtime'}</small></h6>
           <GamesPenaltyCard period={period} />
         </div>

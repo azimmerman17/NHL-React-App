@@ -9,7 +9,7 @@ const GamesRecap = () => {
   let { gameId } = useParams()
   let [contentData, setContentData] = useState({})
   const link = `/api/v1/game/${gameId}/content`
-
+  console.log(contentData)
   useEffect(() => {
     const fetchData = async () => {
       const BASE_URL = 'https://statsapi.web.nhl.com/'
@@ -29,10 +29,16 @@ const GamesRecap = () => {
       const { recap } = editorial
       const { items } = recap
       const { epg } = media
+      const article = () => {
+        if (items.length) {
+          return <GamesRecapArticle recap={items[0]} epg={epg}/>
+
+        }
+      }
 
       return (
         <Stack gap={2}>
-          <GamesRecapArticle recap={items[0]} epg={epg}/>
+          {article()}
           <GamesRecapHighlights highlights={highlights} />
         </Stack>
       )

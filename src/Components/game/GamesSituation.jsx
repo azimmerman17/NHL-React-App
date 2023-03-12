@@ -7,7 +7,7 @@ const GamesSituation = ({ powerPlayInfo, powerPlayStrength }) => {
     const { situationTimeRemaining } = powerPlayInfo
 
     const  timeLeft = () => {
-      return `${Math.round(situationTimeRemaining / 60)}:${situationTimeRemaining % 60}`
+      return `${Math.roundDown(situationTimeRemaining / 60)}:${situationTimeRemaining % 60}`
     }
 
     return (
